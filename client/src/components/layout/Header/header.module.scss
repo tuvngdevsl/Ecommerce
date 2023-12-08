@@ -1,0 +1,59 @@
+.free-ship {
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.header {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3393ec;
+    padding: 0 20px;
+}
+
+.logo {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.menu {
+    width: 800px;
+    margin-right: 50px;
+}
+
+.ant-menu-dark {
+    background: #4b84bd;
+}
+
+.ant-menu-item {
+    margin-left: 20px;
+}
+
+.search-cart-profile {
+    display: flex;
+    align-items: center;
+
+    .ant-input-affix-wrapper {
+        margin-right: 20px;
+        width: 200px;
+    }
+
+    .cart-icon,
+    .profile-icon {
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .cart-badge {
+        background-color: #52c41a;
+    }
+}
