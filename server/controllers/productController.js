@@ -41,7 +41,46 @@ const productController = {
   // Get all a Product
   getAllProduct: asyncHandler(async (req, res) => {
     try {
-      const product = await Product.find(req.query);
+      //Filter
+      const queryObj = { ...req.query };
+      const excludeField = ["page", "sort", "limit", "fields"];
+      excludeField.forEach(el => {
+        delete queryObj[el];
+      });
+
+      let queryStr = JSON.stringify(queryObj);
+      queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
+
+      let query = Product.find(JSON.parse(queryStr));
+
+      //Sort product
+      if (req.query.sort) {
+        const sortBy = req.query.sort.split(",").join(" ");
+        query = query.sort(sortBy);
+      } else {
+        query = query.sort("-createdAt");
+      }
+
+      //limiting the fields
+      if (req.query.fields) {
+        const fields = req.query.fields.split(",").join(" ");
+        query = query.select(fields);
+      } else {
+        query = query.select("-__v");
+      }
+
+      //pagination
+      const page = req.query.page;
+      const limit = req.query.limit;
+      const skip = (page - 1) * limit;
+      query = query.skip(skip).limit(limit);
+      if (req.query.page) {
+        const productCount = await Product.countDocuments();
+        if (skip >= productCount) throw new Error("This page does not exist");
+      }
+
+      const product = await query;
+
       res.status(httpStatusCode.OK).json({
         message: "Get all product Successfully",
         data: product

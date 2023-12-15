@@ -229,6 +229,23 @@ const userController = {
     });
 
     return res.sendStatus(204);
+  }),
+  //update password
+  updatePassword: asyncHandle(async (req, res) => {
+    const { _id } = req.user;
+    const { password } = req.body;
+    validateId(_id);
+    const user = await User.findById(_id);
+    if (password) {
+      user.password = password;
+      const updatePassword = await user.save();
+      res.status(httpStatusCode.OK).json({
+        message: "Update password successfully",
+        newPassword: updatePassword
+      });
+    } else {
+      res.json(user);
+    }
   })
 };
 
