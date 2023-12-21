@@ -4,6 +4,10 @@ import cors from "cors";
 import connectDatabase from "./config/database.js";
 import authRouter from "./routes/authRoute.js";
 import productRouter from "./routes/productRoute.js";
+import blogRouter from "./routes/blogRoute.js";
+import categoryRouter from "./routes/categoryRoute.js";
+import brandRoute from "./routes/brandRoute.js";
+import blogCategoryRouter from "./routes/blogCategoryRoute.js";
 import { errorHandle, notFound } from "./middlewares/errorHandle.js";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
@@ -24,6 +28,10 @@ app.get("/", (req, res) => {
 //routes
 app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
+app.use("/api/blog", blogRouter);
+app.use("/api/category", categoryRouter);
+app.use("/api/blogcategory", blogCategoryRouter);
+app.use("/api/brand", brandRoute);
 
 //middlewares
 app.use(notFound);
