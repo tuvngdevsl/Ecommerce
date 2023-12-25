@@ -65,7 +65,7 @@ const userController = {
   // Get all user
   getAllUser: asyncHandle(async (req, res) => {
     try {
-      const getAllUser = await User.find();
+      const getAllUser = await User.find().populate("wishlist");
       res.status(httpStatusCode.OK).json({
         message: "Get all User successfully",
         data: getAllUser

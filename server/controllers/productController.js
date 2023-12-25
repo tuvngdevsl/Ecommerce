@@ -2,6 +2,7 @@ import Product from "../models/ProductModel.js";
 import asyncHandler from "express-async-handler";
 import httpStatusCode from "../utils/httpStatusCode.js";
 import slugify from "slugify";
+import UserModel from "../models/UserModel.js";
 
 const productController = {
   //Create Product
@@ -113,6 +114,104 @@ const productController = {
       res.status(httpStatusCode.OK).json({
         message: "Delete product successfully!",
         data: deleteProduct
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+
+  addToWishlist: asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    const { prodId } = req.body;
+    try {
+      const user = await UserModel.findById(_id);
+      const alreadyAdded = await user.wishlist.find(id => id.toString() === prodId);
+      if (alreadyAdded) {
+        let user = await UserModel.findByIdAndUpdate(
+          _id,
+          {
+            $pull: { wishlist: prodId }
+          },
+          {
+            new: true
+          }
+        );
+        res.status(httpStatusCode.OK).json({
+          message: "Add to wishlist Successfully",
+          data: user
+        });
+      } else {
+        let user = await UserModel.findByIdAndUpdate(
+          _id,
+          {
+            $push: { wishlist: prodId }
+          },
+          {
+            new: true
+          }
+        );
+
+        res.status(httpStatusCode.OK).json({
+          message: "Uncreated to wishlist Successfully",
+          data: user
+        });
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+  rating: asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    const { star, prodId } = req.body;
+    try {
+      const product = await Product.findById(prodId);
+      let alreadyRated = product.ratings.find(
+        userId => userId.postedby.toString() === _id.toString()
+      );
+      if (alreadyRated) {
+        const updateRating = await Product.updateOne(
+          {
+            ratings: { $elemMatch: alreadyRated }
+          },
+          {
+            $set: { "ratings.$.star": star }
+          },
+          {
+            new: true
+          }
+        );
+      } else {
+        const rateProduct = await Product.findByIdAndUpdate(
+          prodId,
+          {
+            $push: {
+              ratings: {
+                star: star,
+                postedby: _id
+              }
+            }
+          },
+          {
+            new: true
+          }
+        );
+      }
+      const getAllRating = await Product.findById(prodId);
+      let totalRating = getAllRating.ratings.length;
+      let ratingSum = getAllRating.ratings
+        .map(item => item.star)
+        .reduce((pre, curr) => pre + curr, 0);
+      let actualRating = Math.round(ratingSum / totalRating);
+      let finalProduct = await Product.findByIdAndUpdate(
+        prodId,
+        {
+          totalrating: actualRating
+        },
+        { new: true }
+      );
+      res.status(httpStatusCode.OK).json({
+        message: "Rating Ok",
+        data: finalProduct
       });
     } catch (error) {
       throw new Error(error);
