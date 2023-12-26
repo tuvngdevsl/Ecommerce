@@ -1,3 +1,4 @@
+import Order from "../models/orderModel.js";
 import User from "../models/UserModel.js";
 import asyncHandle from "express-async-handler";
 import httpStatusCode from "../utils/httpStatusCode.js";
@@ -8,6 +9,9 @@ import crypto from "crypto";
 import emailController from "./emailController.js";
 import Cart from "../models/cartModel.js";
 import Product from "../models/ProductModel.js";
+import Coupon from "../models/CouponModel.js";
+import uniqid from "uniqid";
+
 const userController = {
   register: asyncHandle(async (req, res) => {
     const { email, firstname, lastname, password, phone } = req.body;
@@ -370,7 +374,7 @@ const userController = {
     try {
       let products = [];
       const user = await User.findById(_id);
-      const alreadyExistCart = await Cart.findOne({ orderBy: user._id });
+      const alreadyExistCart = await Cart.findOne({ orderby: user._id });
       if (alreadyExistCart) {
         alreadyExistCart.remove();
       }
@@ -390,7 +394,7 @@ const userController = {
       let newCart = await new Cart({
         products,
         cartTotal,
-        orderBy: user?._id
+        orderby: user?._id
       }).save();
       res.status(httpStatusCode.Created).json({
         message: "Add to cart successfully",
@@ -405,7 +409,7 @@ const userController = {
     const { _id } = req.user;
     validateId(_id);
     try {
-      const cart = await Cart.findOne({ orderBy: _id }).populate("products.product");
+      const cart = await Cart.findOne({ orderby: _id }).populate("products.product");
       res.status(httpStatusCode.OK).json({
         message: "Get Cart successfully",
         cart: cart
@@ -420,11 +424,118 @@ const userController = {
     validateId(_id);
     try {
       const user = await User.findOne({ _id });
-      const cart = await Cart.findOneAndDelete({ orderBy: user._id });
+      const cart = await Cart.findOneAndDelete({ orderby: user._id });
 
       res.status(httpStatusCode.OK).json({
         message: "Empty cart",
         cart: cart
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+
+  applyCoupon: asyncHandle(async (req, res) => {
+    const { coupon } = req.body;
+    const { _id } = req.user;
+    const validCoupon = await Coupon.findOne({ name: coupon });
+    if (validCoupon === null) {
+      throw new Error("Invalid Coupon");
+    }
+    const user = await User.findOne({ _id });
+    let { cartTotal } = await Cart.findOne({ orderby: user._id }).populate("products.product");
+    let totalAfterDiscount = (cartTotal - (cartTotal - validCoupon.discount) / 100).toFixed(2);
+    await Cart.findOneAndUpdate({ orderby: user._id }, { totalAfterDiscount }, { new: true });
+
+    res.status(httpStatusCode.OK).json({
+      message: "Apply coupon successfully",
+      totalAfterDiscount: totalAfterDiscount
+    });
+  }),
+
+  createOrder: asyncHandle(async (req, res) => {
+    const { COD, couponApplied } = req.body;
+    const { _id } = req.user;
+    validateId(_id);
+
+    try {
+      if (!COD) throw new Error("Create cash order failed");
+      const user = await User.findById(_id);
+      let userCart = await Cart.findOne({ orderby: user?._id });
+      let finalAmount = 0;
+      if (couponApplied && userCart.totalAfterDiscount) {
+        finalAmount = userCart.totalAfterDiscount;
+      } else {
+        finalAmount = userCart.cartTotal;
+      }
+
+      let newOrder = await new Order({
+        products: userCart.products,
+        paymentIntent: {
+          id: uniqid(),
+          method: "COD",
+          amount: finalAmount,
+          status: "Cash on Delivery",
+          created: Date.now(),
+          currency: "usd"
+        },
+        orderby: user._id,
+        orderStatus: "Cash on Delivery"
+      }).save();
+
+      let update = userCart.products.map(item => {
+        return {
+          updateOne: {
+            filter: { _id: item.product._id },
+            update: { $inc: { quantity: -item.count, solid: +item.count } }
+          }
+        };
+      });
+
+      const updated = await Product.bulkWrite(update);
+      res.status(httpStatusCode.Created).json({
+        message: "Order successfully",
+        order: newOrder
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+
+  getOrder: asyncHandle(async (req, res) => {
+    const { _id } = req.user;
+    console.log(_id);
+    validateId(_id);
+    try {
+      const userOrders = await Order.findOne({ orderby: _id }).populate("products.product").exec();
+      res.status(httpStatusCode.OK).json({
+        message: "Get Order successfully",
+        userOrders
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+
+  updateOrderStatus: asyncHandle(async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+    validateId(id);
+
+    try {
+      const updateOrderStatus = await Order.findByIdAndUpdate(
+        id,
+        {
+          orderStatus: status,
+          paymentIntent: {
+            status: status
+          }
+        },
+        { new: true }
+      );
+      res.status(httpStatusCode.OK).json({
+        message: "Update status successfully!",
+        updateOrderStatus
       });
     } catch (error) {
       throw new Error(error);

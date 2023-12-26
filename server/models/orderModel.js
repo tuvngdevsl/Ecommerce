@@ -26,7 +26,7 @@ var OrderSchema = new mongoose.Schema(
         "Delivered"
       ]
     },
-    orderBy: {
+    orderby: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     }

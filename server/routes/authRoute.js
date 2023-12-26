@@ -9,9 +9,14 @@ router.post("/cart", authMiddleware, userController.userCart);
 router.post("/login", userController.login);
 router.post("/admin-login", userController.adminLogin);
 router.post("/forgot-password-token", userController.forgotPasswordToken);
+router.post("/cart/applycoupon", authMiddleware, userController.applyCoupon);
+router.post("/cart/cash-order", authMiddleware, userController.createOrder);
+
 router.put("/reset-password/:token", userController.resetPassword);
 router.put("/password", authMiddleware, userController.updatePassword);
+router.put("/order/update-order/:id", authMiddleware, isAdmin, userController.updateOrderStatus);
 
+router.get("/get-orders", authMiddleware, userController.getOrder);
 router.get("/wishlist", authMiddleware, userController.getWishList);
 router.get("/", userController.getAllUser);
 router.get("/refresh", userController.handleRefreshToken);
