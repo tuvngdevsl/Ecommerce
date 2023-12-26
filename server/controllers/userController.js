@@ -6,7 +6,8 @@ import validateId from "../utils/validateId.js";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import emailController from "./emailController.js";
-
+import Cart from "../models/cartModel.js";
+import Product from "../models/ProductModel.js";
 const userController = {
   register: asyncHandle(async (req, res) => {
     const { email, firstname, lastname, password, phone } = req.body;
@@ -55,6 +56,35 @@ const userController = {
       });
       return res.status(httpStatusCode.OK).json({
         message: "Login successfully",
+        token: token
+      });
+    } else {
+      throw new Error("Invalid Credentials");
+    }
+  }),
+  //Admin Login
+  adminLogin: asyncHandle(async (req, res) => {
+    const { email, password } = req.body;
+    //Check user if user exists or not
+    const findAdmin = await User.findOne({ email });
+    if (findAdmin?.role !== "admin") throw new Error("Not authorized");
+    if (findAdmin && (await findAdmin.isPasswordMatched(password))) {
+      const token = generateToken(findAdmin?._id);
+      const refreshToken = await generateRefreshToken(findAdmin?._id);
+      const updateUser = await User.findByIdAndUpdate(
+        findAdmin?.id,
+        {
+          refreshToken: refreshToken
+        },
+        { new: true }
+      );
+
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        maxAge: 72 * 60 * 60 * 1000
+      });
+      return res.status(httpStatusCode.OK).json({
+        message: "Admin Login successfully",
         token: token
       });
     } else {
@@ -296,6 +326,109 @@ const userController = {
       message: "Reset password Ok",
       data: user
     });
+  }),
+
+  //get WishLish
+  getWishList: asyncHandle(async (req, res) => {
+    const { _id } = req.user;
+    try {
+      const findUser = await User.findById(_id).populate("wishlist");
+      res.status(httpStatusCode.OK).json({
+        message: "Get wishlist successfully",
+        data: findUser
+      });
+    } catch (error) {}
+  }),
+
+  saveUserAddress: asyncHandle(async (req, res) => {
+    const { _id } = req.user;
+    validateId(_id);
+    try {
+      const saveAddress = await User.findByIdAndUpdate(
+        _id,
+        {
+          address: req?.body?.address
+        },
+        {
+          new: true
+        }
+      );
+      res.status(httpStatusCode.OK).json({
+        message: "Save address successfully",
+        data: saveAddress
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+
+  //User cart
+  userCart: asyncHandle(async (req, res) => {
+    const { cart } = req.body;
+    const { _id } = req.user;
+    validateId(_id);
+    try {
+      let products = [];
+      const user = await User.findById(_id);
+      const alreadyExistCart = await Cart.findOne({ orderBy: user._id });
+      if (alreadyExistCart) {
+        alreadyExistCart.remove();
+      }
+      for (let i = 0; i < cart.length; i++) {
+        let obj = {};
+        obj.product = cart[i]._id;
+        obj.count = cart[i].count;
+        obj.color = cart[i].color;
+        let getPrice = await Product.findById(cart[i]._id).select("price").exec();
+        obj.price = getPrice.price;
+        products.push(obj);
+      }
+      let cartTotal = 0;
+      for (let i = 0; i < products.length; i++) {
+        cartTotal = cartTotal + products[i].price * products[i].count;
+      }
+      let newCart = await new Cart({
+        products,
+        cartTotal,
+        orderBy: user?._id
+      }).save();
+      res.status(httpStatusCode.Created).json({
+        message: "Add to cart successfully",
+        Cart: newCart
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+  // Get User cart
+  getUserCart: asyncHandle(async (req, res) => {
+    const { _id } = req.user;
+    validateId(_id);
+    try {
+      const cart = await Cart.findOne({ orderBy: _id }).populate("products.product");
+      res.status(httpStatusCode.OK).json({
+        message: "Get Cart successfully",
+        cart: cart
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+  //Empty Cart
+  emptyCart: asyncHandle(async (req, res) => {
+    const { _id } = req.user;
+    validateId(_id);
+    try {
+      const user = await User.findOne({ _id });
+      const cart = await Cart.findOneAndDelete({ orderBy: user._id });
+
+      res.status(httpStatusCode.OK).json({
+        message: "Empty cart",
+        cart: cart
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
   })
 };
 

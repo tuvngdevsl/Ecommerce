@@ -38,9 +38,7 @@ var ProductSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    images: {
-      type: Array
-    },
+    images: [],
     color: {
       type: String,
       required: true
@@ -49,7 +47,7 @@ var ProductSchema = new mongoose.Schema(
       {
         star: Number,
         comment: {
-          type: String,
+          type: String
         },
         postedby: {
           type: mongoose.Schema.Types.ObjectId,
