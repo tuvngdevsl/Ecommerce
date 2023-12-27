@@ -29,15 +29,22 @@
   text-transform: uppercase;
 }
 
-.header-bottom .dropdown-menu {
-  background-color: #000;
+.header-bottom .menu {
+  background-color: #51585e;
   width: 100%;
-  transform: translate3d(0px, 57px, 0px) !important;
+  transform: translate3d(0px, 48px, 0px) !important;
+}
+
+.header-bottom .dropdown-item {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #000;
 }
 
 .header-bottom .dropdown-item:hover {
   background-color: transparent;
-  color: white;
+  color: #686869;
 }
 
 img {

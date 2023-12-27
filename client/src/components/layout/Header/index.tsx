@@ -9,7 +9,7 @@ type Props = {};
 const HeaderComponent = (props: Props) => {
   return (
     <div>
-      <header className={cx("header-top-stript", "py-3")}>
+      <header className={cx("header-top-stript", "py-2")}>
         <div className="container-xxl">
           <div className="row">
             <div className="col-6">
@@ -99,13 +99,13 @@ const HeaderComponent = (props: Props) => {
           </div>
         </div>
       </header>
-      <header className={cx("header-bottom", " py-3")}>
+      <header className={cx("header-bottom", "py-3")}>
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
               <div className={cx("menu-bottom d-flex align-items-center", "gap-30")}>
                 <div>
-                  {/* <div className={cx("dropdown")}>
+                  <div className="dropdown">
                     <button
                       className="btn btn-secondary dropdown-toggle"
                       type="button"
@@ -118,48 +118,21 @@ const HeaderComponent = (props: Props) => {
                       />
                       <span className="me-5 d-line-block">Shop Categories</span>
                     </button>
-                    <ul className="dropdown-menu">
+                    <ul className={cx("dropdown-menu", "menu")}>
                       <li>
-                        <Link className="dropdown-item" to="#">
+                        <Link className={cx("dropdown-item", "text-white")} to="">
                           Action
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="#">
+                        <Link className={cx("dropdown-item", "text-white")} to="">
                           Another action
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="#">
+                        <Link className={cx("dropdown-item", "text-white")} to="">
                           Something else here
                         </Link>
-                      </li>
-                    </ul>
-                  </div> */}
-                  <div className="dropdown">
-                    <button
-                      className="btn btn-secondary dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Dropdown button
-                    </button>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Action
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Another action
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Something else here
-                        </a>
                       </li>
                     </ul>
                   </div>
