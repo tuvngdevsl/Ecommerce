@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoute } from "./routes";
 import DefaultLayout from "./components/layout/DefaultLayout";
 import "./components/GlobalStyle/GlobalStyles.scss";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   return (
