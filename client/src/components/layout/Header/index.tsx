@@ -54,7 +54,11 @@ const HeaderComponent = (props: Props) => {
               <div className="header-upper-links d-flex align-items-center justify-content-between">
                 <div>
                   <Link to="" className={cx("d-flex align-items-center text-dark", "gap-10")}>
-                    <img src="https://static.thenounproject.com/png/465820-200.png" alt="" />
+                    <img
+                      src="https://static.thenounproject.com/png/465820-200.png"
+                      alt=""
+                      className={cx("header-img")}
+                    />
                     <p className="mb-0">
                       Compare <br /> Products
                     </p>
@@ -65,6 +69,7 @@ const HeaderComponent = (props: Props) => {
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/3132/3132924.png"
                       alt="wishlist"
+                      className={cx("header-img")}
                     />
                     <p className="mb-0">
                       Favourite <br /> wishlist
@@ -76,6 +81,7 @@ const HeaderComponent = (props: Props) => {
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png"
                       alt="user"
+                      className={cx("header-img")}
                     />
                     <p className="mb-0">
                       Login <br /> My Account
@@ -87,6 +93,7 @@ const HeaderComponent = (props: Props) => {
                     <img
                       src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
                       alt="cart"
+                      className={cx("header-img")}
                     />
                     <div className="d-flex flex-column">
                       <span className="badge bg-white text-dark">0</span>
@@ -115,6 +122,7 @@ const HeaderComponent = (props: Props) => {
                       <img
                         src="https://www.svgrepo.com/show/312300/hamburger-menu.svg"
                         alt="menu"
+                        className={cx("header-img")}
                       />
                       <span className="me-5 d-line-block">Shop Categories</span>
                     </button>

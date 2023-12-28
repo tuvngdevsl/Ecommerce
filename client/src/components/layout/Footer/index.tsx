@@ -1,95 +1,148 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
-import "./Footer.module.scss";
+import styles from "./Footer.module.scss";
+import classNames from "classnames/bind";
+import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsSearch, BsYoutube } from "react-icons/bs";
+
+const cx = classNames.bind(styles);
 
 type Props = {};
 
 const Footer = (props: Props) => {
-  const infoLink = [
-    { id: 0, name: "Contact Us", to: "/contact" },
-    { id: 1, name: "Sell with Us", to: "/sell" },
-    { id: 2, name: "Shipping", to: "/shipping" }
-  ];
-
-  const bussinessLink = (
-    <ul className="support-link">
-      <li className="footer-link">
-        <Link to="/dashboard"> Account Detail </Link>
-      </li>
-      <li className="footer-link">
-        <Link to="/dashboard/orders">Orders </Link>
-      </li>
-    </ul>
-  );
-
-  const footerLink = infoLink.map(item => (
-    <li key={item.id} className="footer-link">
-      <Link to={item.to} key={item.id}>
-        {item.name}
-      </Link>
-    </li>
-  ));
-
   return (
-    <footer className="footer">
-      <Container>
-        <div className="footer-content">
-          <div className="footer-block">
-            <div className="block-title">
-              <h3 className="text-uppercase">Customer Service</h3>
+    <div>
+      <footer className="py-4">
+        <div className="container-xxl">
+          <div className="row align-items-center">
+            <div className="col-5">
+              <div className="footer=top-data d-flex gap-30 align-items-center">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqPMRWYptRJ37R-FcGvQnLUCFndgFTTdNaqXufenEGgA&s"
+                  alt="newsletter"
+                  className={cx("footer-img")}
+                />
+                <h2 className="mb-0 text-white">Sign up for Newsletter</h2>
+              </div>
             </div>
-            <div className="block-content">
-              <ul>{footerLink}</ul>
-            </div>
-          </div>
-          <div className="footer-block">
-            <div className="block-title">
-              <h3 className="text-uppercase">Links</h3>
-            </div>
-            <div className="block-content">
-              <ul>{footerLink}</ul>
-            </div>
-          </div>
-          <div className="footer-block">
-            <div className="block-title">
-              <h3 className="text-uppercase">Newsletter</h3>
-              {/* New letter component */}
+            <div className="col-7">
+              <div className="input-group">
+                <input
+                  type="text"
+                  className="form-control py-2"
+                  placeholder="Your email address"
+                  aria-label="Your email address"
+                  aria-describedby="basic-addon2"
+                />
+                <span className={cx("input-group-text", " p-3")} id="basic-addon2">
+                  Subcribe
+                </span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="footer-copyright">
-          <span> {new Date().getFullYear()} Vent Store</span>
+      </footer>
+      <footer className="py-3">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-4">
+              <h4 className="text-white mb-4">Contact Us</h4>
+              <div>
+                <address className="text-white fs-4">
+                  HNOI: B6C Nam Trung Yen, Phuong Trung Hoa, <br /> Cau Giay, Ha Noi <br />
+                  PinCode: 8033
+                </address>
+                <a href="tel:+84865607682" className="text-white mt-3 d-block mb-1">
+                  +84 865607682
+                </a>
+                <a href="mailto:tuvngdevsl@gmail.com" className="text-white mt-2 d-block mb-0">
+                  tuvngdevsl@gmail.com
+                </a>
+                <div className={cx("social_icons d-flex align-items-center mt-4", "gap-15")}>
+                  <a href="/">
+                    <BsLinkedin className="text-white fs-2" />
+                  </a>
+                  <a href="/">
+                    <BsGithub className="text-white fs-2" />
+                  </a>
+                  <a href="/">
+                    <BsInstagram className="text-white fs-2" />
+                  </a>
+                  <a href="/">
+                    <BsFacebook className="text-white fs-2" />
+                  </a>
+                  <a href="/">
+                    <BsYoutube className="text-white fs-2" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <h4 className="text-white mb-4">Information</h4>
+              <div className="footer-links d-flex flex-column">
+                <Link className="text-white py-2 mb-1" to="">
+                  Privacy Policy
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Refund Policy
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Shipping Policy
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Terms and Conditions
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Blog
+                </Link>
+              </div>
+            </div>
+            <div className="col-3">
+              <h4 className="text-white mb-4">Account</h4>
+              <div className="footer-links d-flex flex-column">
+                <Link className="text-white py-2 mb-1" to="">
+                  About Us
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Faq
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Contact
+                </Link>
+              </div>
+            </div>
+            <div className="col-2">
+              <h4 className="text-white mb-4">QuickLink</h4>
+              <div className="footer-links d-flex flex-column">
+                <Link className="text-white py-2 mb-1" to="">
+                  LapTop
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Headphone
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Tablet
+                </Link>
+                <Link className="text-white py-2 mb-1" to="">
+                  Watch
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-        <ul className="footer-social-item">
-          <li>
-            <a href="/#facebook" rel="noreferrer noopener" target="_blank">
-              <span className="facebook-icon"></span>
-            </a>
-          </li>
-          <li>
-            <a href="/#instagram" rel="noreferrer noopener" target="_blank">
-              <span className="instagram-icon"></span>
-            </a>
-          </li>
-          <li>
-            <a href="/#pinterest" rel="noreferrer noopener" target="_blank">
-              <span className="pinterest-icon"></span>
-            </a>
-          </li>
-          <li>
-            <a href="/#youtube" rel="noreferrer noopener" target="_blank">
-              <span className="youtube-icon"></span>
-            </a>
-          </li>
-          <li>
-            <a href="/#twitter" rel="noreferrer noopener" target="_blank">
-              <span className="twitter-icon"></span>
-            </a>
-          </li>
-        </ul>
-      </Container>
-    </footer>
+      </footer>
+      <footer className="py-4">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <p className="text-center text-white">
+                &copy; {new Date().getFullYear()} Powered by VuTu
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 

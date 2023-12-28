@@ -1,0 +1,82 @@
+.button {
+  background-color: #232f3e;
+  color: white;
+  font-size: 14px;
+  padding: 13px 33px;
+  border-radius: 15px;
+}
+
+.button:hover {
+  background-color: #febd69;
+  color: #131921;
+}
+
+.main-banner-content {
+  top: 15%;
+  left: 5%;
+}
+
+.main-banner-content h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #f60606;
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.main-banner-content h5 {
+  font-size: 52px;
+  line-height: 64px;
+  letter-spacing: -2px;
+  color: #000;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.main-banner-content p {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.4px;
+  color: #000;
+}
+
+.small-banner-content {
+  top: 25%;
+  left: 10%;
+}
+
+.small-banner-content h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #f60606;
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.small-banner-content h5 {
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: -2px;
+  color: #000;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.small-banner-content p {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.4px;
+  color: #000;
+}
+
+.small-banner {
+  width: 49%;
+}
+
+.gap-10 {
+  gap: 10px;
+}
