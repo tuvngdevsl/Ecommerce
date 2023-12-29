@@ -1,17 +1,20 @@
-/* Header*/
+/* Header */
 
 .header-top-stript {
   background-color: #eaeaea !important;
   border-bottom: 1px solid #3b4149;
+  padding: 10px 0;
 }
 
 .header-upper {
   background-color: #eaeaea !important;
   border-bottom: 1px solid #3b4149;
+  padding: 15px 0;
 }
 
 .header-bottom {
   background-color: #eaeaea !important;
+  padding: 15px 0;
 }
 
 .form-control:focus {
@@ -52,14 +55,136 @@
   height: 35px;
 }
 
-.gap-10 {
-  gap: 10px;
+/* Header Upper Links Styles */
+.header-upper-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    flex: 0 0 23%;
+    max-width: 23%;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+
+      .header-img {
+        width: 35px;
+        height: 35px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      &:hover {
+        color: #686869;
+      }
+    }
+  }
 }
 
-.gap-15 {
-  gap: 15px;
+/* Menu Bottom Styles */
+.menu-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .dropdown {
+    position: relative;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      img {
+        width: 35px;
+        height: 35px;
+      }
+
+      span {
+        margin-left: 5px;
+      }
+    }
+
+    .menu {
+      background-color: #51585e;
+      width: 100%;
+      transform: translate3d(0px, 48px, 0px) !important;
+    }
+
+    .dropdown-item {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 3px;
+      border-bottom: 1px solid #000;
+
+      &:hover {
+        background-color: transparent;
+        color: #686869;
+      }
+    }
+  }
+
+  .menu-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+      letter-spacing: 0.3;
+      text-transform: uppercase;
+
+      &:hover {
+        color: #686869;
+      }
+    }
+  }
 }
 
-.gap-30 {
-  gap: 30px;
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .col-2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .col-5,
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .menu-links {
+    flex-direction: column;
+
+    a {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .header-upper {
+    padding: 10px 0;
+  }
+
+  .col-5,
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 15px;
+  }
 }

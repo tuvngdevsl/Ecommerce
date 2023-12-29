@@ -17,9 +17,58 @@ html {
 
 body {
   font-size: 1.6rem;
+  background-color: #f8efef;
 }
 
 a {
   text-decoration: none;
   display: inline-block;
+}
+
+.button {
+  background-color: #232f3e;
+  color: white;
+  font-size: 14px;
+  padding: 13px 33px;
+  border-radius: 15px;
+}
+
+.button:hover {
+  background-color: #febd69;
+  color: #131921;
+}
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-15 {
+  gap: 15px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+// Variable Definitions
+$primary-color: #232f3e;
+$secondary-color: #febd69;
+$accent-color: #f60606;
+$text-color: #000;
+$background-color: #fff;
+$box-shadow-color: #0000001a;
+$border-color: #ededed;
+
+// Button Styles
+.button {
+  background-color: $primary-color;
+  color: white;
+  font-size: 14px;
+  padding: 5px 20px;
+  border-radius: 50px;
+  margin-top: 15px;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $text-color;
+  }
 }

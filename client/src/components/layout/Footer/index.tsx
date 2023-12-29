@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { Container } from "reactstrap";
+
 import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
-import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsSearch, BsYoutube } from "react-icons/bs";
+import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
 
 const cx = classNames.bind(styles);
 
@@ -17,11 +16,7 @@ const Footer = (props: Props) => {
           <div className="row align-items-center">
             <div className="col-5">
               <div className="footer=top-data d-flex gap-30 align-items-center">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqPMRWYptRJ37R-FcGvQnLUCFndgFTTdNaqXufenEGgA&s"
-                  alt="newsletter"
-                  className={cx("footer-img")}
-                />
+                <img src="images/newsletter.png" alt="newsletter" className={cx("footer-img")} />
                 <h2 className="mb-0 text-white">Sign up for Newsletter</h2>
               </div>
             </div>
