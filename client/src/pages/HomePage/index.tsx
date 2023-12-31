@@ -225,10 +225,10 @@ const HomePage = (props: Props) => {
             <div className="col-12">
               <div className={cx("section-heading")}>Featured Collection</div>
             </div>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductCard grid={1} />
+            <ProductCard grid={1} />
+            <ProductCard grid={1} />
+            <ProductCard grid={1} />
           </div>
         </div>
       </section>
@@ -237,10 +237,43 @@ const HomePage = (props: Props) => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-3">
-              <div className="famous-card bg-dark">
-                <h5>Big screen</h5>
-                <h6>Smart Watch Series 7</h6>
-                <p>From $399 or $16.62/mo. for 24 mo.*</p>
+              <div className={cx("famous-card", "position-relative")}>
+                <img src="images/subbanner-01.webp" className="img-fluid" alt="famous" />
+                <div className={cx("famous-content", "position-absolute")}>
+                  <h5 className="text-white">Big screen</h5>
+                  <h6 className="text-white">Smart Watch Series 7</h6>
+                  <p className="text-white">From $399 or $16.62/mo. for 24 mo.*</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className={cx("famous-card", "position-relative")}>
+                <img src="images/subbanner-02.webp" alt="famous" className="img-fluid" />
+                <div className={cx("famous-content", "position-absolute")}>
+                  <h5 className="text-dark">Studio Display</h5>
+                  <h6 className="text-dark">600 Hits of brigthness</h6>
+                  <p className="text-dark">24-inch 5k Retina display </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className={cx("famous-card", "position-relative")}>
+                <img src="images/subbanner-03.webp" alt="famous" className="img-fluid" />
+                <div className={cx("famous-content", "position-absolute")}>
+                  <h5 className="text-dark">Home Speaker</h5>
+                  <h6 className="text-dark">Room-filling sound</h6>
+                  <p className="text-dark">24-inch 5k Retina display </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className={cx("famous-card", "position-relative")}>
+                <img src="images/subbanner-04.webp" alt="famous" className="img-fluid" />
+                <div className={cx("famous-content", "position-absolute")}>
+                  <h5 className="text-dark">Smart Phone</h5>
+                  <h6 className="text-dark">Iphone 13 Pro.</h6>
+                  <p className="text-dark">Now in Black. From $1999 or $41.63/mo. </p>
+                </div>
               </div>
             </div>
           </div>
@@ -257,6 +290,7 @@ const HomePage = (props: Props) => {
               <SpecialProduct />
               <SpecialProduct />
               <SpecialProduct />
+              <SpecialProduct />
             </div>
           </div>
         </div>
@@ -269,10 +303,10 @@ const HomePage = (props: Props) => {
               <div className={cx("section-heading")}>Our Popular Products</div>
             </div>
             <div className="row">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              <ProductCard grid={1} />
+              <ProductCard grid={1} />
+              <ProductCard grid={1} />
+              <ProductCard grid={1} />
             </div>
           </div>
         </div>
