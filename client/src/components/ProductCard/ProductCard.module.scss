@@ -74,6 +74,9 @@
 .gr-3 {
   width: 24%;
 }
+.gr-12 .action-bar {
+  top: 17%;
+}
 
 .gr-12 .product-card {
   display: flex;
@@ -82,4 +85,20 @@
 
 .gr-12 .product-card .product-image {
   width: 270px;
+  height: auto;
+}
+
+.gr-4 .product-image {
+  width: 100%;
+}
+
+.gr-6 .product-image img {
+  margin: auto;
+  display: block;
+}
+
+.product-card p.description {
+  font-size: 13px;
+  color: #777777;
+  margin-right: 20px;
 }

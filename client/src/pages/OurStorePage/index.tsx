@@ -150,6 +150,7 @@ const OurStore = (props: Props) => {
                     <div className="w-50">
                       <h5>Kids headphones bulk 10 pack multi colored for students</h5>
                       <Reactstarts value={4} size={24} count={5} activeColor="#ffd700" />
+
                       <b>$ 500</b>
                     </div>
                   </div>
@@ -179,7 +180,7 @@ const OurStore = (props: Props) => {
                     <div className={cx("d-flex align-items-center", "gap-10")}>
                       <img
                         src="images/gr4.svg"
-                        className="d-block img-fluid"
+                        className={cx("d-block img-fluid")}
                         alt="grid"
                         onClick={() => setGrid(3)}
                       />

@@ -30,6 +30,11 @@ const ProductCard = (props: Props) => {
               Kids headphones bulk 10 pack multi colored for students
             </h5>
             <ReactStars count={5} size={24} value="3" color2={"#ffd700"} />
+            <p className={cx("description")}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ea sed ut veniam, vero,
+              totam consequatur reiciendis voluptatum corrupti, itaque fugiat quam porro cumque
+              cupiditate! Minus rem quos repellendus quod!
+            </p>
             <p className={cx("product-prices")}>$100.00</p>
             <div className={cx("action-bar", "position-absolute")}>
               <div className={cx("d-flex flex-column", "gap-15")}>
@@ -64,6 +69,11 @@ const ProductCard = (props: Props) => {
               Kids headphones bulk 10 pack multi colored for students
             </h5>
             <ReactStars count={5} size={24} value="3" color2={"#ffd700"} />
+            <p className={cx("description")}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ea sed ut veniam, vero,
+              totam consequatur reiciendis voluptatum corrupti, itaque fugiat quam porro cumque
+              cupiditate! Minus rem quos repellendus quod!
+            </p>
             <p className={cx("product-prices")}>$100.00</p>
             <div className={cx("action-bar", "position-absolute")}>
               <div className={cx("d-flex flex-column", "gap-15")}>
