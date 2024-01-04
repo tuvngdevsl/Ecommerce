@@ -53,7 +53,10 @@ const HeaderComponent = (props: Props) => {
             <div className="col-5">
               <div className="header-upper-links d-flex align-items-center justify-content-between">
                 <div>
-                  <Link to="" className={cx("d-flex align-items-center text-dark", "gap-10")}>
+                  <Link
+                    to="/compare"
+                    className={cx("d-flex align-items-center text-dark", "gap-10")}
+                  >
                     <img
                       src="https://static.thenounproject.com/png/465820-200.png"
                       alt=""
@@ -65,7 +68,10 @@ const HeaderComponent = (props: Props) => {
                   </Link>
                 </div>
                 <div>
-                  <Link to="" className={cx("d-flex align-items-center text-dark", "gap-10")}>
+                  <Link
+                    to="/wishlist"
+                    className={cx("d-flex align-items-center text-dark", "gap-10")}
+                  >
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/3132/3132924.png"
                       alt="wishlist"
@@ -77,7 +83,7 @@ const HeaderComponent = (props: Props) => {
                   </Link>
                 </div>
                 <div>
-                  <Link to="" className={cx("d-flex align-items-center text-dark", "gap-10")}>
+                  <Link to="/login" className={cx("d-flex align-items-center text-dark", "gap-10")}>
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png"
                       alt="user"
@@ -89,7 +95,7 @@ const HeaderComponent = (props: Props) => {
                   </Link>
                 </div>
                 <div>
-                  <Link to="" className={cx("d-flex align-items-center text-dark", "gap-10")}>
+                  <Link to="/cart" className={cx("d-flex align-items-center text-dark", "gap-10")}>
                     <img
                       src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
                       alt="cart"
