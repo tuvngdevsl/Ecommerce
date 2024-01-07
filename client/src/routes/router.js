@@ -1,3 +1,4 @@
+import BlogDetail from "../pages/BlogDetail";
 import BlogPage from "../pages/BlogPage";
 import CartPage from "../pages/CartPage";
 import CompareProductPage from "../pages/CompareProductPage";
@@ -7,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import OurStore from "../pages/OurStorePage";
 import RegisterPage from "../pages/RegisterPage";
+import ResetPassword from "../pages/ResetPasswordPage";
 import WishlistPage from "../pages/WishListPage";
 
 const privateRouter = [];
@@ -20,12 +22,14 @@ const publicRoute = [
   { path: "/register", component: RegisterPage },
   { path: "/upload", component: RegisterPage, layout: null },
   { path: "/store", component: OurStore },
-  { path: "/blog", component: BlogPage },
+  { path: "/blogs", component: BlogPage },
+  { path: "/blog/:id", component: BlogDetail },
   { path: "/contact", component: ContactPage },
   { path: "/compare", component: CompareProductPage },
   { path: "/wishlist", component: WishlistPage },
   { path: "/cart", component: CartPage },
-  { path: "/forgot-password", component: ForgotPassword }
+  { path: "/forgot-password", component: ForgotPassword },
+  { path: "/reset-password", component: ResetPassword }
 ];
 
 export { privateRouter, publicRoute };

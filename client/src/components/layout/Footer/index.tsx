@@ -15,7 +15,7 @@ const Footer = (props: Props) => {
         <div className="container-xxl">
           <div className="row align-items-center">
             <div className="col-5">
-              <div className="footer=top-data d-flex gap-30 align-items-center">
+              <div className="footer=top-data d-flex align-items-center">
                 <img src="images/newsletter.png" alt="newsletter" className={cx("footer-img")} />
                 <h2 className="mb-0 text-white">Sign up for Newsletter</h2>
               </div>
@@ -110,7 +110,7 @@ const Footer = (props: Props) => {
               <h4 className="text-white mb-4">QuickLink</h4>
               <div className="footer-links d-flex flex-column">
                 <Link className="text-white py-2 mb-1" to="">
-                  LapTop
+                  Laptop
                 </Link>
                 <Link className="text-white py-2 mb-1" to="">
                   Headphone

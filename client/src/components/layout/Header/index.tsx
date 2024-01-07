@@ -17,7 +17,7 @@ const HeaderComponent = (props: Props) => {
             </div>
             <div className="col-6">
               <p className="text-end telephone">
-                Hotline:{" "}
+                Hotline:
                 <a className="text-dark" href="tel:+84 865607622">
                   +84 865607622
                 </a>
@@ -155,7 +155,7 @@ const HeaderComponent = (props: Props) => {
                   <div className={cx("d-flex align-items-center", "gap-15")}>
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/store">Our Store</NavLink>
-                    <NavLink to="/blog">Blogs</NavLink>
+                    <NavLink to="/blogs">Blogs</NavLink>
                     <NavLink to="/contact">Contact</NavLink>
                   </div>
                 </div>

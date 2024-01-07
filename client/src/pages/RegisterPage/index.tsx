@@ -23,10 +23,34 @@ const RegisterPage = (props: Props) => {
                 <form action="" className="d-flex flex-column gap-15">
                   <div className="">
                     <input
+                      type="text"
+                      name="firstname"
+                      className={cx("form-custom", "form-control")}
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div className="">
+                    <input
+                      type="text"
+                      name="lastname"
+                      className={cx("form-custom", "form-control")}
+                      placeholder="Last name"
+                    />
+                  </div>
+                  <div className="">
+                    <input
                       type="email"
                       name="email"
                       className={cx("form-custom", "form-control")}
                       placeholder="Enter your email"
+                    />
+                  </div>
+                  <div className="">
+                    <input
+                      type="text"
+                      name="phone"
+                      className={cx("form-custom", "form-control")}
+                      placeholder="Phone number"
                     />
                   </div>
                   <div className="mt-1">

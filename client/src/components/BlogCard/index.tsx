@@ -19,7 +19,7 @@ const BlogCard = (props: Props) => {
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium expedita
           reprehenderit
         </p>
-        <Link to="" className="button">
+        <Link to="/blog/:id" className="button">
           READ MORE
         </Link>
       </div>
