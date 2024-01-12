@@ -4,11 +4,11 @@ import Meta from "../../components/Meta";
 
 type Props = {};
 
-const PrivacyPolicyPage = (props: Props) => {
+const ShippingPolicyPage = (props: Props) => {
   return (
     <>
-      <Meta title="Privacy Policy" />
-      <BreadCrumb title="Privacy Policy" />
+      <Meta title="Shipping Policy" />
+      <BreadCrumb title="Shipping Policy" />
       <section className="policy-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
           <div className="row">
@@ -22,4 +22,4 @@ const PrivacyPolicyPage = (props: Props) => {
   );
 };
 
-export default PrivacyPolicyPage;
+export default ShippingPolicyPage;

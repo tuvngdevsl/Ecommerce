@@ -28,7 +28,7 @@ const CompareProductPage = (props: Props) => {
                   <img src="images/watch.jpg" alt="" />
                 </div>
                 <div className={cx("compare-product-detail")}>
-                  <h5 className={cx("title")}>Iphone 13 Promax</h5>
+                  <h5 className={cx("title")}>Iphone 13 Pro max</h5>
                   <h6 className={cx("price")}>$100</h6>
                   <div>
                     <div className={cx("product-detail")}>

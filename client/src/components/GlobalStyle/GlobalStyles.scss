@@ -65,10 +65,21 @@ $border-color: #ededed;
   font-size: 14px;
   padding: 5px 20px;
   border-radius: 50px;
-  margin-top: 15px;
 
   &:hover {
     background-color: $secondary-color;
     color: $text-color;
   }
+}
+
+.policy {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.js-image-zoom__zoomed-image {
+  left: 50px !important;
+  padding: 10px;
+  background-color: white;
+  z-index: 1000;
 }

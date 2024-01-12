@@ -14,7 +14,7 @@ const ProductCard = (props: Props) => {
   return (
     <>
       <div className={`${location.pathname === "/store" ? `${cx(`gr-${props.grid}`)}` : "col-3"}`}>
-        <Link to="/" className={cx("product-card", "position-relative")}>
+        <Link to=":id" className={cx("product-card", "position-relative")}>
           <div className={cx("wishlist-icon", "position-absolute")}>
             <Link to="">
               <img src="images/wish.svg" alt="wishlist" />

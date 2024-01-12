@@ -1,6 +1,5 @@
 import Meta from "../../components/Meta";
 import BreadCrumb from "../../components/BreadCrumb";
-import BlogCard from "../../components/BlogCard";
 import styles from "./Blog.module.scss";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
