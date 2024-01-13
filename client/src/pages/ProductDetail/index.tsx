@@ -14,6 +14,16 @@ const cx = classNames.bind(styles);
 type Props = {};
 
 const ProductDetail = (props: Props) => {
+  const copyToClipboard = (text: String) => {
+    console.log("text", text);
+    var textField = document.createElement("textarea");
+    textField.innerText = text.toString();
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand("copy");
+    textField.remove();
+  };
+
   const imageZoom = {
     width: 400,
     height: 600,
@@ -155,6 +165,26 @@ const ProductDetail = (props: Props) => {
                         Add to Wishlist
                       </a>
                     </div>
+                  </div>
+                  <div className="d-flex gap-10 flex-column my-3">
+                    <h3 className={cx("product-heading")}>Shipping & Return : </h3>
+                    <p className={cx("product-data")}>
+                      Free shipping and returns available on all orders! <br /> We ship all US
+                      domestic orders within <b>5-10 business days! </b>
+                    </p>
+                  </div>
+                  <div className="d-flex gap-10 align-items-center my-2">
+                    <h3 className={cx("product-heading")}>Product Link:</h3>
+                    <a
+                      href="javascript:void(0);"
+                      onClick={() => {
+                        copyToClipboard(
+                          "https://www.leafstudios.in/cdn/shop/products/Main_a66bce90-71a9-4c4f-9469-078ec70933e0_800x.jpg?v=1673960414"
+                        );
+                      }}
+                    >
+                      Copy Product Link
+                    </a>
                   </div>
                 </div>
               </div>

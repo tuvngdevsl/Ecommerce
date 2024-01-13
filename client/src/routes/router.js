@@ -1,6 +1,7 @@
 import BlogDetail from "../pages/BlogDetail";
 import BlogPage from "../pages/BlogPage";
 import CartPage from "../pages/CartPage";
+import Checkout from "../pages/CheckoutPage";
 import CompareProductPage from "../pages/CompareProductPage";
 import ContactPage from "../pages/ContactPage";
 import ForgotPassword from "../pages/ForgotPasswordPage";
@@ -39,7 +40,8 @@ const publicRoute = [
   { path: "/refund-policy", component: RefundPolicyPage },
   { path: "/shipping-policy", component: ShippingPolicyPage },
   { path: "/terms-conditions", component: TermAndConditionsPage },
-  { path: "/product/:id", component: ProductDetail }
+  { path: "/product/:id", component: ProductDetail },
+  { path: "/checkout", component: Checkout }
 ];
 
 export { privateRouter, publicRoute };

@@ -2,7 +2,6 @@ import Meta from "../../components/Meta";
 import BreadCrumb from "../../components/BreadCrumb";
 import classNames from "classnames/bind";
 import styles from "./ResetPassword.module.scss";
-import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 type Props = {};
