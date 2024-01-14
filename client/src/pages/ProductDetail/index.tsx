@@ -9,6 +9,7 @@ import ReactImageZoom from "react-image-zoom";
 import Color from "../../components/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
+import Container from "../../components/Container";
 
 const cx = classNames.bind(styles);
 type Props = {};
@@ -35,7 +36,7 @@ const ProductDetail = (props: Props) => {
     <>
       <Meta title="Product Name" />
       <BreadCrumb title="Product Name" />
-      <div className="main-product-wrapper py-5 home-wrapper-2">
+      <Container class1="main-product-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
           <div className="row">
             <div className="col-6">
@@ -83,7 +84,7 @@ const ProductDetail = (props: Props) => {
                 <div className={cx("border-bottom", "py-3")}>
                   <p className="price">$200.00</p>
                   <div className="d-flex align-items-center gap-10">
-                    <ReactStars count={5} size={24} value="3" color2={"#ffd700"} />
+                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
                     <p className={cx("mb-0", "t-review")}>(2 Reviews)</p>
                   </div>
                   <a href="#review" className={cx("review-btn")}>
@@ -191,104 +192,90 @@ const ProductDetail = (props: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
 
-      <div className={cx("description-wrapper", "py-5 home-wrapper-2")}>
-        <div className="container-xxl">
-          <div className="row">
-            <div className="col-12">
-              <h4>Description</h4>
-              <div className="bg-white p-3">
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro ullam temporibus
-                  pariatur ipsum error animi id unde laboriosam quidem deleniti tempore dicta esse
-                  magni provident nemo possimus vitae, saepe nihil!
-                </p>
-              </div>
+      <Container class1={cx("description-wrapper", "py-5 home-wrapper-2")}>
+        <div className="row">
+          <div className="col-12">
+            <h4>Description</h4>
+            <div className="bg-white p-3">
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro ullam temporibus
+                pariatur ipsum error animi id unde laboriosam quidem deleniti tempore dicta esse
+                magni provident nemo possimus vitae, saepe nihil!
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
 
-      <section className={cx("reviews-wrapper", "home-wrapper-2")}>
-        <div className="container-xxl">
-          <div className="row">
-            <div className="col-12">
-              <h3>Reviews</h3>
-              <div className={cx("review-inner-wrapper")}>
-                <div
-                  className={cx("review-head", "d-flex justify-content-between align-items-end")}
-                >
+      <Container class1={cx("reviews-wrapper", "home-wrapper-2")}>
+        <div className="row">
+          <div className="col-12">
+            <h3>Reviews</h3>
+            <div className={cx("review-inner-wrapper")}>
+              <div className={cx("review-head", "d-flex justify-content-between align-items-end")}>
+                <div>
+                  <h4 className="mb-4">Customer Review</h4>
+                  <div className="d-flex align-items-center gap-10">
+                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+                    <p className="mb-0">Based on 2 Reviews</p>
+                  </div>
+                </div>
+                {orderedProduct && (
                   <div>
-                    <h4 className="mb-4">Customer Review</h4>
-                    <div className="d-flex align-items-center gap-10">
-                      <ReactStars count={5} size={24} value="3" color2={"#ffd700"} />
-                      <p className="mb-0">Based on 2 Reviews</p>
-                    </div>
+                    <a href="/" className="text-decoration-underline">
+                      Write a Review
+                    </a>
                   </div>
-                  {orderedProduct && (
-                    <div>
-                      <a href="/" className="text-decoration-underline">
-                        Write a Review
-                      </a>
-                    </div>
-                  )}
-                </div>
-                <div className={cx("review-form", "py-4")}>
-                  <h4>Write a Review</h4>
-                  <form action="" className="d-flex flex-column gap-15">
-                    <div>
-                      <ReactStars count={5} size={24} value="3" color2={"#ffd700"} />
-                    </div>
-                    <div>
-                      <textarea
-                        className={cx("w-100 form-control", "form-custom")}
-                        name=""
-                        placeholder="Comments"
-                      ></textarea>
-                    </div>
-                    <div className="d-flex justify-content-end">
-                      <button className="button border-0">Submit Review</button>
-                    </div>
-                  </form>
-                </div>
-                <div className={cx("reviews", "mt-4")}>
-                  <div className={cx("reviews")}>
-                    <div className="d-flex gap-10 align-items-center">
-                      <h6 className="mb-0">Navdeep</h6>
-                      <ReactStars count={5} size={24} value="3" color2={"#ffd700"} />
-                    </div>
-                    <p className="mt-3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus numquam
-                      assumenda iste quibusdam? In neque at explicabo deserunt aut autem saepe
-                      dolorum iusto earum repudiandae cumque, id expedita sapiente fugit.
-                    </p>
+                )}
+              </div>
+              <div className={cx("review-form", "py-4")}>
+                <h4>Write a Review</h4>
+                <form action="" className="d-flex flex-column gap-15">
+                  <div>
+                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
                   </div>
+                  <div>
+                    <textarea
+                      className={cx("w-100 form-control", "form-custom")}
+                      name=""
+                      placeholder="Comments"
+                    ></textarea>
+                  </div>
+                  <div className="d-flex justify-content-end">
+                    <button className="button border-0">Submit Review</button>
+                  </div>
+                </form>
+              </div>
+              <div className={cx("reviews", "mt-4")}>
+                <div className={cx("reviews")}>
+                  <div className="d-flex gap-10 align-items-center">
+                    <h6 className="mb-0">Navdeep</h6>
+                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+                  </div>
+                  <p className="mt-3">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus numquam assumenda
+                    iste quibusdam? In neque at explicabo deserunt aut autem saepe dolorum iusto
+                    earum repudiandae cumque, id expedita sapiente fugit.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <section className="popular-wrapper py-5 home-wrapper-2">
-        <div className="container-xxl">
+      </Container>
+      <Container class1="popular-wrapper py-5 home-wrapper-2">
+        <div className="row">
+          <div className="col-12">
+            <div className={cx("section-heading")}>Our Popular Products</div>
+          </div>
+
           <div className="row">
-            <div className="col-12">
-              <div className={cx("section-heading")}>Our Popular Products</div>
-            </div>
-            <section className="reviews-wrapper py-5 home-wrapper-2">
-              <div className="container-xxl">
-                <div className="row">
-                  <div className="col-12"></div>
-                </div>
-              </div>
-            </section>
-            <div className="row">
-              <ProductCard grid={1} />
-            </div>
+            <ProductCard grid={1} />
           </div>
         </div>
-      </section>
+      </Container>
     </>
   );
 };
