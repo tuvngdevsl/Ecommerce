@@ -13,7 +13,7 @@ const HeaderComponent = (props: Props) => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-6">
-              <p className="mb-0">Free shipping over 200$ and Free Returns</p>
+              <p className="mb-0">Free shipping for orders over $100</p>
             </div>
             <div className="col-6">
               <p className="text-end telephone">
@@ -32,7 +32,7 @@ const HeaderComponent = (props: Props) => {
             <div className="col-2">
               <h2>
                 <Link className="text-dark" to="/">
-                  Đồ nội thất
+                  Northwest
                 </Link>
               </h2>
             </div>
@@ -120,7 +120,7 @@ const HeaderComponent = (props: Props) => {
                 <div>
                   <div className="dropdown">
                     <button
-                      className="btn btn-secondary dropdown-toggle"
+                      className="btn dropdown-toggle d-flex justify-items-center align-items-center"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -130,7 +130,7 @@ const HeaderComponent = (props: Props) => {
                         alt="menu"
                         className={cx("header-img")}
                       />
-                      <span className="me-5 d-line-block">Shop Categories</span>
+                      <span className="me-5 fs-4 d-line-block">Shop Categories</span>
                     </button>
                     <ul className={cx("dropdown-menu", "menu")}>
                       <li>

@@ -63,7 +63,6 @@ $border-color: #ededed;
     font-weight: 400;
     line-height: 24px;
     color: $accent-color;
-    margin: 0 0 12px;
     letter-spacing: 0.3px;
     text-transform: uppercase;
   }
@@ -126,12 +125,6 @@ $border-color: #ededed;
   }
 }
 
-// Brand Image Styles
-.brand-img {
-  width: 100px;
-  height: 100px;
-}
-
 // Section Heading Styles
 .section-heading {
   font-size: 26px;
@@ -172,4 +165,15 @@ $border-color: #ededed;
   line-height: 24px;
   font-weight: 100;
   color: #000;
+}
+
+.marque-wrapper {
+  background-color: #fff;
+  border-radius: 10px;
+
+  // Brand Image Styles
+  .brand-img {
+    width: 150px;
+    height: 150px;
+  }
 }

@@ -39,9 +39,9 @@ const LoginPage = (props: Props) => {
                   <Link to="/forgot-password"> Forgot Password?</Link>
                 </div>
                 <div className="d-flex justify-content-center gap-15 align-items-center">
-                  <button type="submit" className="button border-0">
+                  <Link to="/admin" type="submit" className="button border-0 text-white">
                     Login
-                  </button>
+                  </Link>
                   <Link to="/register" className={cx("button border-0", "register")}>
                     Register
                   </Link>

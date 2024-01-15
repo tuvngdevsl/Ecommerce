@@ -1,9 +1,10 @@
 import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { publicRoute } from "./routes/router";
+import { publicRoute, privateRouter } from "./routes/router";
 import DefaultLayout from "./components/layout/DefaultLayout";
 import "./components/GlobalStyle/GlobalStyles.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import AdminLayout from "./components/layout/AdminLayout";
 
 function App() {
   return (
@@ -13,6 +14,22 @@ function App() {
           {publicRoute.map((route, index) => {
             const Layout = route.layout === null ? Fragment : DefaultLayout;
             const Page = route.component;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+
+          {privateRouter.map((route, index) => {
+            const Layout = route.layout === null ? Fragment : AdminLayout;
+            const Page: any = route.component;
             return (
               <Route
                 key={index}

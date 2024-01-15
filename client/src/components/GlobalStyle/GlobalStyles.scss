@@ -17,12 +17,75 @@ html {
 
 body {
   font-size: 1.6rem;
-  background-color: #f8efef;
+  background-color: #f2f2f2;
 }
 
 a {
   text-decoration: none;
   display: inline-block;
+}
+
+.ant-layout {
+  height: 100vh;
+}
+
+.trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.ant-layout-sider {
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
+}
+
+.sm-logo {
+  display: none;
+}
+
+.main {
+  overflow-y: scroll;
+}
+.ant-layout-header {
+  h5 {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  p {
+    line-height: 20px;
+    font-size: 13px;
+  }
+
+  & div .badge {
+    top: 16px;
+    right: -6px;
+  }
+}
+.ant-menu-title-content {
+  font-size: 16px;
+}
+.ant-layout-sider-collapsed {
+  flex: 0 0 80px !important;
+  max-width: 80px !important;
+  min-width: 80px !important;
+  width: 80px !important;
+  .sm-logo {
+    display: block;
+  }
+
+  .lg-logo {
+    display: none;
+  }
+}
+.logo {
+  height: 64px;
+  margin: 0;
+  background-color: #ffd333;
 }
 
 .button {

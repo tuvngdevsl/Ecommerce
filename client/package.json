@@ -10,6 +10,7 @@
     "@types/node": "^16.18.67",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
+    "antd": "^5.12.8",
     "bootstrap": "^5.3.2",
     "classnames": "^2.3.2",
     "normalize.scss": "^0.1.0",

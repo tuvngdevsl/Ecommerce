@@ -1,3 +1,5 @@
+import AdminLayout from "../components/layout/AdminLayout";
+import Dashboard from "../pages/AdminPage/DashBoard";
 import BlogDetail from "../pages/BlogDetail";
 import BlogPage from "../pages/BlogPage";
 import CartPage from "../pages/CartPage";
@@ -17,7 +19,10 @@ import ShippingPolicyPage from "../pages/ShippingPolicyPage";
 import TermAndConditionsPage from "../pages/TermsandConditionsPage";
 import WishlistPage from "../pages/WishListPage";
 
-const privateRouter = [];
+const privateRouter = [
+  { path: "/admin", component: Dashboard },
+  { path: "/admin/product", component: AdminLayout, layout: null }
+];
 
 /*
  * Public Route

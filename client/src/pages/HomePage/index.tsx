@@ -15,7 +15,7 @@ type Props = {};
 const HomePage = (props: Props) => {
   return (
     <>
-      <Container class1="home-wrapper-1 py-5">
+      <Container class1={cx("home-wrapper-1", "py-5")}>
         <div className="row">
           <div className="col-6">
             <div className="main-banner position-relative">
@@ -25,11 +25,11 @@ const HomePage = (props: Props) => {
                 className={cx("img-fluid rounded-3", "img-banner")}
               />
               <div className={cx("main-banner-content", "position-absolute")}>
-                <h4>Đồ gia dụng và nội thất</h4>
-                <h5>Ghế đẩu</h5>
+                <h4>SUPERCHARGED FOR PROS</h4>
+                <h5>iPad S13+ Pro.</h5>
                 <p>From $222.00 or %24.82/mo.</p>
                 <Link className={cx("button")} to="">
-                  BUY NƠW{" "}
+                  BUY NOW
                 </Link>
               </div>
             </div>
@@ -48,8 +48,8 @@ const HomePage = (props: Props) => {
                   className={cx("img-fluid rounded-3", "img-banner")}
                 />
                 <div className={cx("position-absolute", "small-banner-content")}>
-                  <h4>Đồ gia dụng và nội thất</h4>
-                  <h5>Ghế đẩu</h5>
+                  <h4>Best Sale</h4>
+                  <h5>Laptops Max</h5>
                   <p>
                     From $222.00 or <br /> %24.82/mo.
                   </p>
@@ -62,8 +62,8 @@ const HomePage = (props: Props) => {
                   className={cx("img-fluid rounded-3", "img-banner")}
                 />
                 <div className={cx("position-absolute", "small-banner-content")}>
-                  <h4>Đồ gia dụng và nội thất</h4>
-                  <h5>Ghế đẩu</h5>
+                  <h4>New Arrival</h4>
+                  <h5>Buy Ipad Air</h5>
                   <p>
                     From $222.00 or <br /> %24.82/mo.
                   </p>
@@ -76,8 +76,8 @@ const HomePage = (props: Props) => {
                   className={cx("img-fluid rounded-3", "img-banner")}
                 />
                 <div className={cx("position-absolute", "small-banner-content")}>
-                  <h4>Đồ gia dụng và nội thất</h4>
-                  <h5>Ghế đẩu</h5>
+                  <h4>15% Off</h4>
+                  <h5>Smartwatch</h5>
                   <p>
                     From $222.00 or <br /> %24.82/mo.
                   </p>
@@ -90,8 +90,8 @@ const HomePage = (props: Props) => {
                   className={cx("img-fluid rounded-3", "img-banner")}
                 />
                 <div className={cx("position-absolute", "small-banner-content")}>
-                  <h4>Đồ gia dụng và nội thất</h4>
-                  <h5>Ghế đẩu</h5>
+                  <h4>Free Engraving</h4>
+                  <h5>AirPods Max</h5>
                   <p>
                     From $222.00 or <br /> %24.82/mo.
                   </p>
@@ -277,10 +277,10 @@ const HomePage = (props: Props) => {
         </div>
       </Container>
 
-      <Container class1="marque-wrapper py-5">
+      <Container class1={cx("marque-wrapper")}>
         <div className="row">
           <div className="col-12">
-            <div className="marque-inner-wrapper ">
+            <div className="marque-inner-wrapper">
               <Marquee>
                 <div className="mx-4 w-25">
                   <img src="images/brand-01.png" alt="brand" className={cx("brand-img")} />
