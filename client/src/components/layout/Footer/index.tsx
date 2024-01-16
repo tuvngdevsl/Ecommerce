@@ -29,7 +29,7 @@ const Footer = (props: Props) => {
                   aria-label="Your email address"
                   aria-describedby="basic-addon2"
                 />
-                <span className={cx("input-group-text", " p-3")} id="basic-addon2">
+                <span className={cx("input-group-text", "p-4")} id="basic-addon2">
                   Subcribe
                 </span>
               </div>
