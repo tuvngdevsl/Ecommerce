@@ -30,6 +30,10 @@ const ForgotPassword = (props: Props) => {
                   name="email"
                   classname={cx("form-custom")}
                   placeholder="Enter your email"
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
                 <div className="mt-3 d-flex justify-content-center flex-column gap-15 align-items-center">
                   <button className="button border-0" type="submit">

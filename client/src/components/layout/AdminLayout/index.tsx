@@ -180,15 +180,16 @@ const AdminLayout = (props: Props) => {
                   alt="avatar"
                 />
               </div>
-              <div
-                role="button"
+              <button
+                className="dropdown"
+                type="button"
                 id="dropdownMenuLink"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 <h5 className="mb-0">Vu Tu</h5>
                 <p className="mb-0">tuvngdevsl@gmail.com</p>
-              </div>
+              </button>
             </div>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li>

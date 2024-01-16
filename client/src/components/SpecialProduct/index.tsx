@@ -17,7 +17,7 @@ const SpecialProduct = (props: Props) => {
           <div className={cx("special-product-content")}>
             <h5 className="brand">Halves</h5>
             <h6 className="title">Iphone 15 Promax; Mobile; Sim...</h6>
-            <ReactStars starCount={5} value={3} name="star" editing={false} starColor="#ffd700" />
+            <ReactStars count={5} size={24} color2={"#ffd700"} />
             <p className="price">
               <span className="red-p">$100</span> &nbsp; <del>$200</del>
             </p>

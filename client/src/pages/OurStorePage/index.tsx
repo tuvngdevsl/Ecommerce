@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./OurStore.module.scss";
 import BreadCrumb from "../../components/BreadCrumb";
 import Meta from "../../components/Meta";
-import Reactstarts from "react-stars";
+import ReactStars from "react-stars";
 import { useState } from "react";
 import ProductCard from "../../components/ProductCard";
 import Container from "../../components/Container";
@@ -125,7 +125,8 @@ const OurStore = (props: Props) => {
                   </div>
                   <div className="w-50">
                     <h5>Kids headphones bulk 10 pack multi colored for students</h5>
-                    <Reactstarts value={4} size={24} count={5} activeColor="#ffd700" />
+                    <ReactStars count={5} size={24} color2={"#ffd700"} />
+
                     <b>$ 500</b>
                   </div>
                 </div>
@@ -135,8 +136,7 @@ const OurStore = (props: Props) => {
                   </div>
                   <div className="w-50">
                     <h5>Kids headphones bulk 10 pack multi colored for students</h5>
-                    <Reactstarts value={4} size={24} count={5} activeColor="#ffd700" />
-
+                    <ReactStars count={5} size={24} color2={"#ffd700"} />
                     <b>$ 500</b>
                   </div>
                 </div>

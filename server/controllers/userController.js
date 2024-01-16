@@ -68,7 +68,7 @@ const userController = {
   }),
   //Admin Login
   adminLogin: asyncHandle(async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, firstname, lastname, phone } = req.body;
     //Check user if user exists or not
     const findAdmin = await User.findOne({ email });
     if (findAdmin?.role !== "admin") throw new Error("Not authorized");

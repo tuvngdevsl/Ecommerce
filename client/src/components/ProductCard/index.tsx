@@ -40,7 +40,7 @@ const ProductCard = (props: Props) => {
             <h5 className={cx("product-title")}>
               Kids headphones bulk 10 pack multi colored for students
             </h5>
-            <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+            <ReactStars count={5} size={24} color2={"#ffd700"} />
             <p className={cx("description")}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ea sed ut veniam, vero,
               totam consequatur reiciendis voluptatum corrupti, itaque fugiat quam porro cumque

@@ -16,7 +16,6 @@ type Props = {};
 
 const ProductDetail = (props: Props) => {
   const copyToClipboard = (text: String) => {
-    console.log("text", text);
     var textField = document.createElement("textarea");
     textField.innerText = text.toString();
     document.body.appendChild(textField);
@@ -84,7 +83,7 @@ const ProductDetail = (props: Props) => {
                 <div className={cx("border-bottom", "py-3")}>
                   <p className="price">$200.00</p>
                   <div className="d-flex align-items-center gap-10">
-                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+                    <ReactStars count={5} size={24} color2={"#ffd700"} />
                     <p className={cx("mb-0", "t-review")}>(2 Reviews)</p>
                   </div>
                   <a href="#review" className={cx("review-btn")}>
@@ -218,7 +217,7 @@ const ProductDetail = (props: Props) => {
                 <div>
                   <h4 className="mb-4">Customer Review</h4>
                   <div className="d-flex align-items-center gap-10">
-                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+                    <ReactStars count={5} size={24} color2={"#ffd700"} />
                     <p className="mb-0">Based on 2 Reviews</p>
                   </div>
                 </div>
@@ -234,7 +233,7 @@ const ProductDetail = (props: Props) => {
                 <h4>Write a Review</h4>
                 <form action="" className="d-flex flex-column gap-15">
                   <div>
-                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+                    <ReactStars count={5} size={24} color2={"#ffd700"} />
                   </div>
                   <div>
                     <textarea
@@ -252,7 +251,7 @@ const ProductDetail = (props: Props) => {
                 <div className={cx("reviews")}>
                   <div className="d-flex gap-10 align-items-center">
                     <h6 className="mb-0">Navdeep</h6>
-                    <ReactStars count={5} size={24} value={3} color2={"#ffd700"} />
+                    <ReactStars count={5} size={24} color2={"#ffd700"} />
                   </div>
                   <p className="mt-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus numquam assumenda

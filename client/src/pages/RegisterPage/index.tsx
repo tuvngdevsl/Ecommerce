@@ -27,18 +27,30 @@ const RegisterPage = (props: Props) => {
                   name="firstname"
                   placeholder="First name"
                   classname={cx("form-custom")}
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
                 <Input
                   type="text"
                   name="lastname"
                   placeholder="Last name"
                   classname={cx("form-custom")}
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
                 <Input
                   type="email"
                   name="email"
                   placeholder="Enter your email"
                   classname={cx("form-custom")}
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
 
                 <Input
@@ -46,6 +58,10 @@ const RegisterPage = (props: Props) => {
                   name="phone"
                   placeholder="Phone number"
                   classname={cx("form-custom")}
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
 
                 <Input
@@ -53,6 +69,10 @@ const RegisterPage = (props: Props) => {
                   placeholder="Enter your password"
                   name="password"
                   classname={cx("form-custom")}
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
 
                 <Input
@@ -60,6 +80,10 @@ const RegisterPage = (props: Props) => {
                   placeholder="Confirm your password"
                   name="password"
                   classname={cx("form-custom")}
+                  i_id=""
+                  value=""
+                  onchange={() => {}}
+                  onblur={() => {}}
                 />
 
                 <div className="">

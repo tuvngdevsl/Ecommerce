@@ -45,6 +45,10 @@ const Addproduct = (props: Props) => {
             type="text"
             placeholder="Enter Product Title"
             classname="form-floating py-3 mb-3"
+            i_id=""
+            value=""
+            onchange={() => {}}
+            onblur={() => {}}
           />
           <div className="mb-3">
             <ReactQuill theme="snow" value={desc} onChange={e => handleDesc(e)} />
@@ -54,6 +58,10 @@ const Addproduct = (props: Props) => {
             type="text"
             placeholder="Enter Product Price"
             classname="form-floating py-3 mb-3"
+            i_id=""
+            value=""
+            onchange={() => {}}
+            onblur={() => {}}
           />
           <select name="" id="" className="form-control py-3 mb-3">
             <option value="">Select Brand</option>

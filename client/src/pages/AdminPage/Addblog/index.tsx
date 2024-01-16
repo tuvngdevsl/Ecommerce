@@ -56,6 +56,10 @@ const Addblog = (props: Props) => {
               type="text"
               placeholder="Enter Blog title"
               classname="form-floating py-3 mb-3"
+              i_id=""
+              value=""
+              onchange={() => {}}
+              onblur={() => {}}
             />
           </div>
           <select name="" id="" className="form-control py-3 mb-3">
