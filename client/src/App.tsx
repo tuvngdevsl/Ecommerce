@@ -33,13 +33,23 @@ function App() {
             return (
               <Route
                 key={index}
-                path={route.path}
+                path="/admin"
                 element={
                   <Layout>
                     <Page />
                   </Layout>
                 }
-              />
+              >
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  }
+                />
+              </Route>
             );
           })}
         </Routes>

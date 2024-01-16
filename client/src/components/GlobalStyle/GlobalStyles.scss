@@ -1,8 +1,5 @@
 @import "normalize.scss";
-
-:root {
-  $color-eaeaea: #eaeaea;
-}
+@import "variables";
 
 * {
   margin: 0;
@@ -48,8 +45,24 @@ a {
   display: none;
 }
 
-.main {
+.red {
+  color: red;
+  font-family: Roboto !important;
+}
+
+.green {
+  color: green;
+  font-family: Roboto !important;
+}
+
+main {
   overflow-y: scroll;
+  background-color: transparent !important;
+  height: 85vh;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
 }
 .ant-layout-header {
   h5 {
@@ -112,14 +125,10 @@ a {
   gap: 30px;
 }
 
-// Variable Definitions
-$primary-color: #232f3e;
-$secondary-color: #febd69;
-$accent-color: #f60606;
-$text-color: #000;
-$background-color: #fff;
-$box-shadow-color: #0000001a;
-$border-color: #ededed;
+.form-control {
+  box-shadow: none;
+  border-color: $color-ced4da;
+}
 
 // Button Styles
 .button {
@@ -166,4 +175,25 @@ $border-color: #ededed;
 
 .cart-col-4 {
   width: 15%;
+}
+
+.quill {
+  background-color: #fff;
+}
+
+.title {
+  font: 28px;
+  font-family: Roboto !important;
+  color: $color-212529;
+}
+
+.sub-title {
+  font: 24px;
+  font-family: Roboto !important;
+}
+
+.desc {
+  font: 14px;
+  font-family: Roboto !important;
+  color: $color-828599;
 }

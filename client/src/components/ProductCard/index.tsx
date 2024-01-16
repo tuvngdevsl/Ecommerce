@@ -18,9 +18,9 @@ const ProductCard = (props: Props) => {
       >
         <Link
           to={`${
-            location.pathname == "/"
+            location.pathname === "/"
               ? "/product/:id"
-              : location.pathname == "/product/:id"
+              : location.pathname === "/product/:id"
               ? "/product/:id"
               : ":id"
           }`}

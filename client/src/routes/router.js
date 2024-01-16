@@ -1,5 +1,20 @@
 import AdminLayout from "../components/layout/AdminLayout";
+import Addblog from "../pages/AdminPage/Addblog";
+import Addblogcat from "../pages/AdminPage/Addblogcat";
+import Addbrand from "../pages/AdminPage/Addbrand";
+import Addcat from "../pages/AdminPage/Addcat";
+import Addcolor from "../pages/AdminPage/Addcolor";
+import Addproduct from "../pages/AdminPage/Addproduct";
+import Bloglist from "../pages/AdminPage/BlogList";
+import Blogcatlist from "../pages/AdminPage/Blogcatlist";
+import Brandlist from "../pages/AdminPage/Brandlist";
+import Categorylist from "../pages/AdminPage/Categorylist";
+import Colorlist from "../pages/AdminPage/Colorlist";
+import Customers from "../pages/AdminPage/Customers";
 import Dashboard from "../pages/AdminPage/DashBoard";
+import Enquiries from "../pages/AdminPage/Enquiries";
+import Orders from "../pages/AdminPage/Orders";
+import Productlist from "../pages/AdminPage/Productlist";
 import BlogDetail from "../pages/BlogDetail";
 import BlogPage from "../pages/BlogPage";
 import CartPage from "../pages/CartPage";
@@ -20,8 +35,23 @@ import TermAndConditionsPage from "../pages/TermsandConditionsPage";
 import WishlistPage from "../pages/WishListPage";
 
 const privateRouter = [
-  { path: "/admin", component: Dashboard },
-  { path: "/admin/product", component: AdminLayout, layout: null }
+  { path: "", component: Dashboard },
+  { path: "enquiries", component: Enquiries },
+  { path: "blog-list", component: Bloglist },
+  { path: "blog-category-list", component: Blogcatlist },
+  { path: "orders", component: Orders },
+  { path: "blog", component: Addblog },
+  { path: "blog-category", component: Addblogcat },
+  { path: "category", component: Addcat },
+  { path: "color", component: Addcolor },
+  { path: "brand", component: Addbrand },
+  { path: "product", component: Addproduct },
+  { path: "customers", component: Customers },
+  { path: "list-color", component: Colorlist },
+  { path: "list-category", component: Categorylist },
+  { path: "list-brand", component: Brandlist },
+  { path: "list-product", component: Productlist },
+  { path: "blog-category-lis", component: Blogcatlist, layout: null }
 ];
 
 /*
