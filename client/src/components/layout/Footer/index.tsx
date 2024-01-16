@@ -74,51 +74,51 @@ const Footer = (props: Props) => {
             </div>
             <div className="col-3">
               <h4 className="text-white mb-4">Information</h4>
-              <div className="footer-links d-flex flex-column">
-                <Link className="text-white py-2 mb-1" to="/privacy-policy">
+              <div className={cx("d-flex flex-column", "footer-links")}>
+                <Link className="py-2 mb-1" to="/privacy-policy">
                   Privacy Policy
                 </Link>
-                <Link className="text-white py-2 mb-1" to="/refund-policy">
+                <Link className="py-2 mb-1" to="/refund-policy">
                   Refund Policy
                 </Link>
-                <Link className="text-white py-2 mb-1" to="/shipping-policy">
+                <Link className="py-2 mb-1" to="/shipping-policy">
                   Shipping Policy
                 </Link>
-                <Link className="text-white py-2 mb-1" to="/terms-conditions">
+                <Link className="py-2 mb-1" to="/terms-conditions">
                   Terms and Conditions
                 </Link>
-                <Link className="text-white py-2 mb-1" to="/blogs">
+                <Link className="py-2 mb-1" to="/blogs">
                   Blog
                 </Link>
               </div>
             </div>
             <div className="col-3">
               <h4 className="text-white mb-4">Account</h4>
-              <div className="footer-links d-flex flex-column">
-                <Link className="text-white py-2 mb-1" to="">
+              <div className={cx("d-flex flex-column", "footer-links")}>
+                <Link className="py-2 mb-1" to="">
                   About Us
                 </Link>
-                <Link className="text-white py-2 mb-1" to="">
+                <Link className="py-2 mb-1" to="">
                   Faq
                 </Link>
-                <Link className="text-white py-2 mb-1" to="/contact">
+                <Link className="py-2 mb-1" to="/contact">
                   Contact
                 </Link>
               </div>
             </div>
             <div className="col-2">
               <h4 className="text-white mb-4">QuickLink</h4>
-              <div className="footer-links d-flex flex-column">
-                <Link className="text-white py-2 mb-1" to="">
+              <div className={cx("d-flex flex-column", "footer-links")}>
+                <Link className="py-2 mb-1" to="">
                   Laptop
                 </Link>
-                <Link className="text-white py-2 mb-1" to="">
+                <Link className="py-2 mb-1" to="">
                   Headphone
                 </Link>
-                <Link className="text-white py-2 mb-1" to="">
+                <Link className="py-2 mb-1" to="">
                   Tablet
                 </Link>
-                <Link className="text-white py-2 mb-1" to="">
+                <Link className="py-2 mb-1" to="">
                   Watch
                 </Link>
               </div>

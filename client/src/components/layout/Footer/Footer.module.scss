@@ -1,61 +1,60 @@
 /* Footer */
-
+@import "../../GlobalStyle/variables";
 footer {
   background-color: #383838 !important;
-}
 
-footer:not(:first-child) {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-footer .input-group-text {
-  background-color: #101010;
-  color: white;
-  padding: 8px 17px;
-}
-
-.footer-img {
-  width: 35px;
-  height: 35px;
-  margin-right: 15px;
-}
-
-/* Footer Top Data Styles */
-.footer-top-data {
-  align-items: center;
-
-  h2 {
-    margin: 0;
-    color: #fff;
-    font-size: 20px;
+  &:not(:first-child) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
-}
 
-/* Social Icons Styles */
-.social_icons {
-  a {
-    color: #fff;
+  & .input-group-text {
+    background-color: #101010;
+    color: white;
+    padding: 8px 17px;
+  }
 
-    &:hover {
-      color: #686869;
+  .footer-img {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+  }
+
+  /* Footer Top Data Styles */
+  .footer-top-data {
+    align-items: center;
+
+    h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 20px;
     }
   }
-}
 
-/* Footer Links Styles */
-.footer-links {
-  a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
-    letter-spacing: 0.3;
-    text-transform: uppercase;
-    padding: 2px 0;
+  /* Social Icons Styles */
+  .social_icons {
+    a {
+      color: #fff;
 
-    &:hover {
-      color: #686869;
+      &:hover {
+        color: #686869;
+      }
+    }
+  }
+
+  /* Footer Links Styles */
+  .footer-links {
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+      letter-spacing: 0.3;
+      text-transform: uppercase;
+      padding: 2px 0;
+    }
+    a:hover {
+      color: #febd69;
     }
   }
 }
@@ -72,6 +71,24 @@ footer .input-group-text {
   .footer-links,
   .social_icons {
     flex-direction: column;
+  }
+
+  /* Footer Links Styles */
+  .footer-links {
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+      letter-spacing: 0.3;
+      text-transform: uppercase;
+      padding: 2px 0;
+
+      &:hover {
+        color: #686869;
+      }
+    }
   }
 }
 

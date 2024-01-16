@@ -221,17 +221,19 @@ const AdminLayout = (props: Props) => {
             </div>
           </div>
         </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG
-          }}
-        >
-          {props.children}
-        </Content>
+        <div className={cx("admin")}>
+          <Content
+            style={{
+              margin: "24px 16px",
+              padding: 24,
+              minHeight: 280,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG
+            }}
+          >
+            {props.children}
+          </Content>
+        </div>
       </Layout>
     </Layout>
   );
