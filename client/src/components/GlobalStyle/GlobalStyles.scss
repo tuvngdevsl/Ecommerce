@@ -45,25 +45,14 @@ a {
   display: none;
 }
 
-.red {
-  color: red;
-  font-family: Roboto !important;
+.button {
+  background-color: #232f3e;
+  color: white;
+  font-size: 14px;
+  padding: 13px 33px;
+  border-radius: 15px;
 }
 
-.green {
-  color: green;
-  font-family: Roboto !important;
-}
-
-main {
-  overflow-y: scroll;
-  background-color: transparent !important;
-  height: 85vh;
-
-  &::-webkit-scrollbar {
-    width: 0px;
-  }
-}
 .ant-layout-header {
   h5 {
     line-height: 20px;
@@ -95,18 +84,14 @@ main {
     display: none;
   }
 }
-.logo {
-  height: 64px;
-  margin: 0;
-  background-color: #ffd333;
+.red {
+  color: red;
+  font-family: Roboto !important;
 }
 
-.button {
-  background-color: #232f3e;
-  color: white;
-  font-size: 14px;
-  padding: 13px 33px;
-  border-radius: 15px;
+.green {
+  color: green;
+  font-family: Roboto !important;
 }
 
 .button:hover {

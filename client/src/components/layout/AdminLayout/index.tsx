@@ -13,6 +13,10 @@ import { SiBrandfolder } from "react-icons/si";
 import { FaBloggerB, FaClipboardList } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { BiCategoryAlt } from "react-icons/bi";
+import styles from "./Adminlayout.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,10 +33,10 @@ const AdminLayout = (props: Props) => {
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo">
+        <div className={cx("logo")}>
           <h2 className="text-white text-center py-4 mb-0">
-            <span className="sm-logo">NB</span>
-            <span className="lg-logo">Northwest Brother</span>
+            <span className={cx("sm-logo")}>NB</span>
+            <span className={cx("lg-logo")}>Northwest Brother</span>
           </h2>
         </div>
         <Menu
@@ -186,7 +190,7 @@ const AdminLayout = (props: Props) => {
                 <p className="mb-0">tuvngdevsl@gmail.com</p>
               </div>
             </div>
-            <div className="dropdown-menu" aria-aria-labelledby="dropdownMenuLink">
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li>
                 <Link
                   className="dropdown-item py-1 mb-1"

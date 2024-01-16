@@ -2,8 +2,7 @@ import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoute, privateRouter } from "./routes/router";
 import DefaultLayout from "./components/layout/DefaultLayout";
-import "./components/GlobalStyle/GlobalStyles.scss";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import AdminLayout from "./components/layout/AdminLayout";
 
 function App() {

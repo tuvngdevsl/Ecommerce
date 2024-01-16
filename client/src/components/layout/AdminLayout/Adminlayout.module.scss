@@ -1,0 +1,15 @@
+main {
+  overflow-y: scroll;
+  background-color: transparent !important;
+  height: 85vh;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+}
+
+.logo {
+  height: 64px;
+  margin: 0;
+  background-color: #ffd333;
+}
