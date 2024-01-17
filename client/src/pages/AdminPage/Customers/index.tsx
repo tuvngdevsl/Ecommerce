@@ -1,5 +1,8 @@
-import React from "react";
+import { useEffect } from "react";
 import { Table } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../../features/customers/customerSlice";
+import { AppDispatch } from "../../../app/store";
 type Props = {};
 const columns = [
   {
@@ -8,28 +11,38 @@ const columns = [
   },
   {
     title: "Name",
-    dataIndex: "name"
+    dataIndex: "name",
+    sorter: (a: any, b: any) => a.name.length - b.name.length
   },
   {
-    title: "Product",
-    dataIndex: "product"
+    title: "Email",
+    dataIndex: "email"
   },
   {
-    title: "Status",
-    dataIndex: "status"
+    title: "Phone",
+    dataIndex: "phone"
   }
 ];
-const data1: any = [];
-for (let i = 0; i < 46; i++) {
-  data1.push({
-    key: i,
-    name: `Edward King ${i}`,
-    product: 32,
-    status: `London, Park Lane no. ${i}`
-  });
-}
 
 const Customers = (props: Props) => {
+  const dispatch: AppDispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+
+  const customerState = useSelector((state: any) => state.customer.customers);
+  const data1: any = [];
+  for (let i = 0; i < customerState.length; i++) {
+    if (customerState[i].role !== "user") {
+      data1.push({
+        key: i + 1,
+        name: customerState[i].fullname,
+        email: customerState[i].email,
+        phone: customerState[i].phone
+      });
+    }
+  }
+
   return (
     <div>
       <h3 className="mb-4">Customers</h3>

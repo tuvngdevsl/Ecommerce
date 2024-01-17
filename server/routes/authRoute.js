@@ -18,7 +18,7 @@ router.put("/order/update-order/:id", authMiddleware, isAdmin, userController.up
 
 router.get("/get-orders", authMiddleware, userController.getOrder);
 router.get("/wishlist", authMiddleware, userController.getWishList);
-router.get("/", userController.getAllUser);
+router.get("/get-users", userController.getAllUser);
 router.get("/refresh", userController.handleRefreshToken);
 router.get("/logout", userController.logout);
 router.get("/:id", authMiddleware, isAdmin, userController.getUserById);

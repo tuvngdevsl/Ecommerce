@@ -21,8 +21,8 @@ const ProductCard = (props: Props) => {
             location.pathname === "/"
               ? "/product/:id"
               : location.pathname === "/product/:id"
-              ? "/product/:id"
-              : ":id"
+                ? "/product/:id"
+                : ":id"
           }`}
           className={cx("product-card", "position-relative")}
         >

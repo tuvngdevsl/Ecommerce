@@ -37,6 +37,8 @@ const LoginPage = () => {
   useEffect(() => {
     if (!user == null || isSuccess) {
       navigate("/admin");
+    } else {
+      navigate("");
     }
   }, [user, isLoading, isError, isSuccess, message]);
 
@@ -49,6 +51,7 @@ const LoginPage = () => {
           <div className="col-12">
             <div className={cx("login-card")}>
               <h3 className="text-center mb-3">Login</h3>
+              <p className="text-center">Login to your account to continute.</p>
               <form action="" onSubmit={formik.handleSubmit} className="d-flex flex-column gap-15">
                 <Input
                   type="text"
@@ -60,10 +63,8 @@ const LoginPage = () => {
                   onchange={formik.handleChange("email")}
                   onblur={formik.handleChange("email")}
                 />
-                <div className={cx("error")}>
-                  {formik.touched.email && formik.errors.email ? (
-                    <div>{formik.errors.email}</div>
-                  ) : null}
+                <div className={cx("error", "mt-2")}>
+                  {formik.touched.email && formik.errors.email}
                 </div>
                 <Input
                   type="password"
@@ -76,9 +77,7 @@ const LoginPage = () => {
                   onblur={formik.handleChange("password")}
                 />
                 <div className={cx("error")}>
-                  {formik.touched.password && formik.errors.password ? (
-                    <div>{formik.errors.password}</div>
-                  ) : null}
+                  {formik.touched.password && formik.errors.password}
                 </div>
                 <div className="">
                   <Link to="/forgot-password"> Forgot Password?</Link>

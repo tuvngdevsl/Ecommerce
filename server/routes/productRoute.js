@@ -17,8 +17,8 @@ router.put(
 router.put("/wishlist", authMiddleware, productController.addToWishlist);
 router.put("/rating", authMiddleware, productController.rating);
 
-router.get("/:id", productController.getProductById);
 router.get("/", productController.getAllProduct);
+router.get("/:id", productController.getProductById);
 router.put("/:id", authMiddleware, isAdmin, productController.updateProduct);
 router.delete("/:id", authMiddleware, isAdmin, productController.deleteProduct);
 
