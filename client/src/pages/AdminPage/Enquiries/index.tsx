@@ -1,23 +1,23 @@
-import React from "react";
-import { Table } from "antd";
+import React from 'react';
+import { Table } from 'antd';
 
 type Props = {};
 const columns = [
   {
-    title: "No",
-    dataIndex: "key"
+    title: 'No',
+    dataIndex: 'key'
   },
   {
-    title: "Name",
-    dataIndex: "name"
+    title: 'Name',
+    dataIndex: 'name'
   },
   {
-    title: "Product",
-    dataIndex: "product"
+    title: 'Product',
+    dataIndex: 'product'
   },
   {
-    title: "Status",
-    dataIndex: "status"
+    title: 'Status',
+    dataIndex: 'status'
   }
 ];
 const data1: any = [];
@@ -32,7 +32,7 @@ for (let i = 0; i < 46; i++) {
 const Enquiries = (props: Props) => {
   return (
     <div>
-      <h3 className="mb-4">Enquiries</h3>
+      <h3 className='mb-4'>Enquiries</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>

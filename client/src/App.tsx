@@ -1,13 +1,13 @@
-import { Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { publicRoute, privateRouter } from "./routes/router";
-import DefaultLayout from "./components/layout/DefaultLayout";
-import AdminLayout from "./components/layout/AdminLayout";
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoute, privateRouter } from './routes/router';
+import DefaultLayout from './components/layout/DefaultLayout';
+import AdminLayout from './components/layout/AdminLayout';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <Routes>
           {publicRoute.map((route, index) => {
             const Layout = route.layout === null ? Fragment : DefaultLayout;
@@ -31,7 +31,7 @@ function App() {
             return (
               <Route
                 key={index}
-                path="/admin"
+                path='/admin'
                 element={
                   <Layout>
                     <Page />

@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import customerService from "./customerServices";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import customerService from './customerServices';
 
-export const getUsers = createAsyncThunk("customer/get-customer", async thunkAPI => {
+export const getUsers = createAsyncThunk('customer/get-customer', async (_, thunkAPI) => {
   try {
     return await customerService.getUsers();
   } catch (error) {
@@ -14,16 +14,16 @@ const initialState = {
   isError: false,
   isLoading: false,
   isSuccess: false,
-  message: ""
+  message: ''
 };
 
-export const customerSlice = createSlice({
-  name: "users",
+const customerSlice = createSlice({
+  name: 'users',
   initialState,
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(getUsers.pending, state => {
+      .addCase(getUsers.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(getUsers.fulfilled, (state, action) => {
@@ -36,7 +36,7 @@ export const customerSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.message = action.error;
+        state.message = action.error.message || '';
       });
   }
 });

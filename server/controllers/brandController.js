@@ -18,10 +18,10 @@ const brandController = {
 
   getAllBrand: asyncHandler(async (req, res) => {
     try {
-      const category = await Brand.find();
+      const brand = await Brand.find();
       res.status(httpStatusCode.OK).json({
         message: "Get all brand successfully",
-        data: category
+        data: brand
       });
     } catch (error) {
       throw new Error(error);

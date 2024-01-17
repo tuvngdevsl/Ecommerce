@@ -1,19 +1,21 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import authService from "./authService";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import authService from './authService';
 
-const getUserfromLocalStorage = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
-  : null;
-
+const userItem = localStorage.getItem('user');
+const getUserfromLocalStorage = userItem ? JSON.parse(userItem) : null;
+interface UserType {
+  username: string;
+  password: string;
+}
 const initialState = {
   user: getUserfromLocalStorage,
   isError: false,
   isLoading: false,
   isSuccess: false,
-  message: ""
+  message: ''
 };
 
-export const login = createAsyncThunk("auth/admin-login", async (user, thunkAPI) => {
+export const login = createAsyncThunk('auth/admin-login', async (user: UserType, thunkAPI) => {
   try {
     return await authService.login(user);
   } catch (error) {
@@ -22,12 +24,12 @@ export const login = createAsyncThunk("auth/admin-login", async (user, thunkAPI)
 });
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {},
-  extraReducers: buider => {
+  extraReducers: (buider) => {
     buider
-      .addCase(login.pending, state => {
+      .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {

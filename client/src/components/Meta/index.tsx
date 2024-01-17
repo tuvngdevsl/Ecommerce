@@ -1,15 +1,15 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
-import React from "react";
+import React from 'react';
 
 type Props = {
-  title: String;
+  title: string;
 };
 
 const Meta = (props: Props) => {
   return (
     <Helmet>
-      <meta charSet="utf-8" />
+      <meta charSet='utf-8' />
       <title>{props.title}</title>
     </Helmet>
   );
