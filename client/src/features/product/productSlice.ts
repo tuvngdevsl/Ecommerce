@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import productService from './productServices';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import productService from "./productServices";
 
-export const getProducts = createAsyncThunk('product/get-products', async (_, thunkApi) => {
+export const getProducts = createAsyncThunk("product/get-products", async (_, thunkApi) => {
   try {
     return await productService.getProducts();
   } catch (error) {
@@ -14,16 +14,16 @@ const initialState = {
   isLoading: false,
   isError: false,
   isSuccess: false,
-  message: ''
+  message: ""
 };
 
 export const productSlice = createSlice({
-  name: 'product',
+  name: "product",
   initialState,
   reducers: {},
-  extraReducers: (buider) => {
+  extraReducers: buider => {
     buider
-      .addCase(getProducts.pending, (state) => {
+      .addCase(getProducts.pending, state => {
         state.isLoading = true;
       })
       .addCase(getProducts.fulfilled, (state, action) => {
@@ -36,7 +36,7 @@ export const productSlice = createSlice({
         state.isSuccess = false;
         state.isLoading = false;
         state.isError = true;
-        state.message = action.error.message || '';
+        state.message = action.error.message || "";
       });
   }
 });

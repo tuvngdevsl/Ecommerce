@@ -1,38 +1,55 @@
-import React from 'react';
-import { Table } from 'antd';
+import React, { useEffect } from "react";
+import { Table } from "antd";
+import { AppDispatch } from "app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "features/category/categorySlice";
+import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 type Props = {};
 const columns = [
   {
-    title: 'No',
-    dataIndex: 'key'
+    title: "No",
+    dataIndex: "key"
   },
   {
-    title: 'Name',
-    dataIndex: 'name'
+    title: "Title",
+    dataIndex: "title"
   },
   {
-    title: 'Product',
-    dataIndex: 'product'
-  },
-  {
-    title: 'Status',
-    dataIndex: 'status'
+    title: "Action",
+    dataIndex: "action"
   }
 ];
-const data1: any = [];
-for (let i = 0; i < 46; i++) {
-  data1.push({
-    key: i,
-    name: `Edward King ${i}`,
-    product: 32,
-    status: `London, Park Lane no. ${i}`
-  });
-}
 
 const Categorylist = (props: Props) => {
+  const dispatch: AppDispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
+  const categoriesState = useSelector((state: any) => state.category.categories);
+
+  const data1: any = [];
+  for (let i = 0; i < categoriesState.length; i++) {
+    data1.push({
+      key: i,
+      title: categoriesState[i].title,
+      action: (
+        <>
+          <Link className="fs-2 text-danger" to="/">
+            <BiEdit />
+          </Link>
+          <Link className="ms-3 fs-2 text-danger" to="/">
+            <AiFillDelete />
+          </Link>
+        </>
+      )
+    });
+  }
   return (
     <div>
-      <h3 className='mb-4'>Product Categories</h3>
+      <h3 className="mb-4">Product Categories</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>

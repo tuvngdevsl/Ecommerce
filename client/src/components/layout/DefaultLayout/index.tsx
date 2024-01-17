@@ -1,7 +1,7 @@
-import React from 'react';
-import HeaderComponent from '../Header';
-import { Container } from 'reactstrap';
-import Footer from '../Footer';
+import React from "react";
+import HeaderComponent from "../Header";
+import { Container } from "reactstrap";
+import Footer from "../Footer";
 
 type Props = {
   children: React.ReactNode;
@@ -9,9 +9,9 @@ type Props = {
 
 const DefaultLayout = (props: Props) => {
   return (
-    <div className='application'>
+    <div className="application">
       <HeaderComponent />
-      <main className='main'>
+      <main className="main">
         <Container>{props.children}</Container>
       </main>
       <Footer />

@@ -1,26 +1,26 @@
-import React from 'react';
-import { BsArrowDownRight } from 'react-icons/bs';
-import { Column } from '@ant-design/plots';
-import { Table } from 'antd';
+import React from "react";
+import { BsArrowDownRight } from "react-icons/bs";
+import { Column } from "@ant-design/plots";
+import { Table } from "antd";
 
 type props = {};
 
 const columns = [
   {
-    title: 'No',
-    dataIndex: 'key'
+    title: "No",
+    dataIndex: "key"
   },
   {
-    title: 'Name',
-    dataIndex: 'name'
+    title: "Name",
+    dataIndex: "name"
   },
   {
-    title: 'Product',
-    dataIndex: 'product'
+    title: "Product",
+    dataIndex: "product"
   },
   {
-    title: 'Status',
-    dataIndex: 'status'
+    title: "Status",
+    dataIndex: "status"
   }
 ];
 const data1: any = [];
@@ -36,63 +36,63 @@ for (let i = 0; i < 46; i++) {
 const Dashboard = (props: props) => {
   const data = [
     {
-      type: 'Jan',
+      type: "Jan",
       sales: 38
     },
     {
-      type: 'Feb',
+      type: "Feb",
       sales: 52
     },
     {
-      type: 'Mar',
+      type: "Mar",
       sales: 61
     },
     {
-      type: 'Apir',
+      type: "Apir",
       sales: 145
     },
     {
-      type: 'May',
+      type: "May",
       sales: 48
     },
     {
-      type: 'Jun',
+      type: "Jun",
       sales: 38
     },
     {
-      type: 'July',
+      type: "July",
       sales: 38
     },
     {
-      type: 'Aug',
+      type: "Aug",
       sales: 38
     },
     {
-      type: 'Sept',
+      type: "Sept",
       sales: 38
     },
     {
-      type: 'Oct',
+      type: "Oct",
       sales: 38
     },
     {
-      type: 'Nov',
+      type: "Nov",
       sales: 38
     },
     {
-      type: 'Dec',
+      type: "Dec",
       sales: 38
     }
   ];
   const config = {
     data,
-    xField: 'type',
-    yField: 'sales',
+    xField: "type",
+    yField: "sales",
 
     label: {
-      position: 'bottom',
+      position: "bottom",
       style: {
-        fill: '#FFFFFF',
+        fill: "#FFFFFF",
         opacity: 1
       }
     },
@@ -104,60 +104,60 @@ const Dashboard = (props: props) => {
     },
     meta: {
       type: {
-        alias: 'Month'
+        alias: "Month"
       },
       sales: {
-        alias: 'Income'
+        alias: "Income"
       }
     }
   };
   return (
     <div>
-      <h3 className='mb-4'>Dashboard</h3>
-      <div className='d-flex justify-content-between align-items-center gap-3'>
-        <div className='d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3'>
+      <h3 className="mb-4">Dashboard</h3>
+      <div className="d-flex justify-content-between align-items-center gap-3">
+        <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3">
           <div>
-            <p className='desc'>Total</p> <h4 className='mb-0 sub-title'>$1100</h4>
+            <p className="desc">Total</p> <h4 className="mb-0 sub-title">$1100</h4>
           </div>
-          <div className='d-flex flex-column align-items-end'>
+          <div className="d-flex flex-column align-items-end">
             <h6>
               <BsArrowDownRight /> 38%
             </h6>
-            <p className='mb-0 desc'>Compare To April 2024</p>
+            <p className="mb-0 desc">Compare To April 2024</p>
           </div>
         </div>
-        <div className='d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3'>
+        <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3">
           <div>
-            <p className='desc'>Total</p>
-            <h4 className='mb-0 sub-title'>$1100</h4>
+            <p className="desc">Total</p>
+            <h4 className="mb-0 sub-title">$1100</h4>
           </div>
-          <div className='d-flex flex-column align-items-end'>
-            <h6 className='red'>
+          <div className="d-flex flex-column align-items-end">
+            <h6 className="red">
               <BsArrowDownRight /> 38%
             </h6>
-            <p className='mb-0 desc'>Compare To April 2024</p>
+            <p className="mb-0 desc">Compare To April 2024</p>
           </div>
         </div>
-        <div className='d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3'>
+        <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 rounded-3">
           <div>
-            <p className='desc'>Total</p> <h4 className='mb-0 sub-title'>$1100</h4>
+            <p className="desc">Total</p> <h4 className="mb-0 sub-title">$1100</h4>
           </div>
-          <div className='d-flex flex-column align-items-end'>
-            <h6 className='green'>
+          <div className="d-flex flex-column align-items-end">
+            <h6 className="green">
               <BsArrowDownRight /> 38%
             </h6>
-            <p className='mb-0 desc'>Compare To April 2024</p>
+            <p className="mb-0 desc">Compare To April 2024</p>
           </div>
         </div>
       </div>
-      <div className='mt-4'>
-        <div className='mb-4 title'>Income Statics</div>
+      <div className="mt-4">
+        <div className="mb-4 title">Income Statics</div>
         <div>
           <Column {...config} />
         </div>
       </div>
-      <div className='mt-4'>
-        <h3 className='mb-4 title'>Recent Orders</h3>
+      <div className="mt-4">
+        <h3 className="mb-4 title">Recent Orders</h3>
         <div>
           <Table columns={columns} dataSource={data1} />
         </div>

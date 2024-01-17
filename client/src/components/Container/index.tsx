@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type Props = {
   class1: string;
@@ -8,7 +8,7 @@ type Props = {
 const Container = (props: Props) => {
   return (
     <section className={props.class1}>
-      <div className='container-xxl'>{props.children}</div>
+      <div className="container-xxl">{props.children}</div>
     </section>
   );
 };

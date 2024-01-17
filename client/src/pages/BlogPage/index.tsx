@@ -1,9 +1,9 @@
-import BreadCrumb from '../../components/BreadCrumb';
-import Meta from '../../components/Meta';
-import classNames from 'classnames/bind';
-import styles from './Blog.module.scss';
-import BlogCard from '../../components/BlogCard';
-import Container from '../../components/Container';
+import BreadCrumb from "../../components/BreadCrumb";
+import Meta from "../../components/Meta";
+import classNames from "classnames/bind";
+import styles from "./Blog.module.scss";
+import BlogCard from "../../components/BlogCard";
+import Container from "../../components/Container";
 
 const cx = classNames.bind(styles);
 type Props = {};
@@ -11,15 +11,15 @@ type Props = {};
 const BlogPage = (props: Props) => {
   return (
     <>
-      <Meta title='Blogs' />
-      <BreadCrumb title='Blogs' />
-      <Container class1='blog-wrapper home-wrapper-2 py-5'>
-        <div className='row'>
-          <div className='col-3'>
-            <div className={cx('filter-card', 'mb-3')}>
-              <h3 className={cx('filter-title')}>Find by Categories</h3>
+      <Meta title="Blogs" />
+      <BreadCrumb title="Blogs" />
+      <Container class1="blog-wrapper home-wrapper-2 py-5">
+        <div className="row">
+          <div className="col-3">
+            <div className={cx("filter-card", "mb-3")}>
+              <h3 className={cx("filter-title")}>Find by Categories</h3>
               <div>
-                <ul className='ps-0'>
+                <ul className="ps-0">
                   <li>Watch</li>
                   <li>TV</li>
                   <li>Camera</li>
@@ -28,18 +28,18 @@ const BlogPage = (props: Props) => {
               </div>
             </div>
           </div>
-          <div className='col-9'>
-            <div className='row'>
-              <div className='col-6 mb-3'>
+          <div className="col-9">
+            <div className="row">
+              <div className="col-6 mb-3">
                 <BlogCard />
               </div>
-              <div className='col-6 mb-3'>
+              <div className="col-6 mb-3">
                 <BlogCard />
               </div>
-              <div className='col-6 mb-3'>
+              <div className="col-6 mb-3">
                 <BlogCard />
               </div>
-              <div className='col-6 mb-3'>
+              <div className="col-6 mb-3">
                 <BlogCard />
               </div>
             </div>

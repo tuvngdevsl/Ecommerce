@@ -1,20 +1,32 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import authReducer from '../features/auth/authSlice';
-import customerReducer from '../features/customers/customerSlice';
-import productReducer from '../features/product/productSlice';
-import brandReducer from '../features/brand/brandSlice';
-
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import authReducer from "../features/auth/authSlice";
+import customerReducer from "../features/customers/customerSlice";
+import productReducer from "../features/product/productSlice";
+import brandReducer from "../features/brand/brandSlice";
+import categoryReducer from "../features/category/categorySlice";
+import colorReducer from "../features/color/colorSlice";
+import blogReducer from "../features/blog/blogSlice";
+import bCategoryReducer from "../features/bCategory/bCategorySlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
     customer: customerReducer,
     product: productReducer,
-    brand: brandReducer
+    brand: brandReducer,
+    category: categoryReducer,
+    color: colorReducer,
+    blog: blogReducer,
+    bCategory: bCategoryReducer
   }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
 
 export default store;

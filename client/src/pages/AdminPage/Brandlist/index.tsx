@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
-import { Table } from 'antd';
-import { AppDispatch } from 'app/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { getBrands } from '../../../features/brand/brandSlice';
-import { Link } from 'react-router-dom';
-import { BiEdit } from 'react-icons/bi';
-import { AiFillDelete } from 'react-icons/ai';
+import React, { useEffect } from "react";
+import { Table } from "antd";
+import { AppDispatch } from "app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { getBrands } from "../../../features/brand/brandSlice";
+import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 type Props = {};
 const columns = [
   {
-    title: 'No',
-    dataIndex: 'key'
+    title: "No",
+    dataIndex: "key"
   },
   {
-    title: 'Title',
-    dataIndex: 'title'
+    title: "Title",
+    dataIndex: "title"
   },
   {
-    title: 'Action',
-    dataIndex: 'action'
+    title: "Action",
+    dataIndex: "action"
   }
 ];
 
@@ -26,7 +26,7 @@ const Brandlist = (props: Props) => {
   const dispatch: AppDispatch = useDispatch();
   useEffect(() => {
     dispatch(getBrands());
-  }, []);
+  }, [dispatch]);
 
   const brandState = useSelector((state: any) => state.brand.brands);
 
@@ -37,10 +37,10 @@ const Brandlist = (props: Props) => {
       title: brandState[i].title,
       action: (
         <>
-          <Link className='fs-2 text-danger' to='/'>
+          <Link className="fs-2 text-danger" to="/">
             <BiEdit />
           </Link>
-          <Link className='ms-3 fs-2 text-danger' to='/'>
+          <Link className="ms-3 fs-2 text-danger" to="/">
             <AiFillDelete />
           </Link>
         </>
@@ -49,7 +49,7 @@ const Brandlist = (props: Props) => {
   }
   return (
     <div>
-      <h3 className='mb-4'>Brands</h3>
+      <h3 className="mb-4">Brands</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>

@@ -32,7 +32,7 @@ app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/category", categoryRouter);
-app.use("/api/blogcategory", blogCategoryRouter);
+app.use("/api/blogCategory", blogCategoryRouter);
 app.use("/api/brand", brandRoute);
 app.use("/api/coupon", couponRoute);
 app.use("/api/color", colorRoute);
