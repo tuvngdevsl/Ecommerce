@@ -507,10 +507,25 @@ const userController = {
     console.log(_id);
     validateId(_id);
     try {
-      const userOrders = await Order.findOne({ orderby: _id }).populate("products.product").exec();
+      const userOrders = await Order.findOne({ orderby: _id })
+        .populate("products.product")
+        .populate("orderby")
+        .exec();
       res.status(httpStatusCode.OK).json({
         message: "Get Order successfully",
-        userOrders
+        data: userOrders
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }),
+
+  getAllOrders: asyncHandle(async (req, res) => {
+    try {
+      const getAllOrders = await Order.find().populate("products.product").populate("orderby");
+      res.status(httpStatusCode.OK).json({
+        message: "Get All Order successfully",
+        data: getAllOrders
       });
     } catch (error) {
       throw new Error(error);

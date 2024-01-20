@@ -1,4 +1,3 @@
-import AdminLayout from "../components/layout/AdminLayout";
 import Addblog from "../pages/AdminPage/Addblog";
 import Addblogcat from "../pages/AdminPage/Addblogcat";
 import Addbrand from "../pages/AdminPage/Addbrand";

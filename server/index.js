@@ -9,6 +9,7 @@ import categoryRouter from "./routes/categoryRoute.js";
 import brandRoute from "./routes/brandRoute.js";
 import colorRoute from "./routes/colorRoute.js";
 import couponRoute from "./routes/couponRouter.js";
+import enqRouter from "./routes/enqRoute.js";
 import blogCategoryRouter from "./routes/blogCategoryRoute.js";
 import { errorHandle, notFound } from "./middlewares/errorHandle.js";
 import cookieParser from "cookie-parser";
@@ -36,12 +37,13 @@ app.use("/api/blogCategory", blogCategoryRouter);
 app.use("/api/brand", brandRoute);
 app.use("/api/coupon", couponRoute);
 app.use("/api/color", colorRoute);
+app.use("/api/enquiry", enqRouter);
 
 //middlewares
 app.use(notFound);
 app.use(errorHandle);
 
-app.listen(PORT || 3001, async () => {
+app.listen(PORT || 5001, async () => {
   await connectDatabase();
   console.log(`Server is running with port: ${process.env.PORT}`);
 });

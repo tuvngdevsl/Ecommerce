@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "antd";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getEnquiries } from "../../../features/enquiry/enquirySlice";
+import { AppDispatch } from "app/store";
+import { Link } from "react-router-dom";
+import { AiFillDelete } from "react-icons/ai";
 type Props = {};
 const columns = [
   {
@@ -12,24 +16,52 @@ const columns = [
     dataIndex: "name"
   },
   {
-    title: "Product",
-    dataIndex: "product"
+    title: "Email",
+    dataIndex: "email"
+  },
+  {
+    title: "Phone",
+    dataIndex: "phone"
   },
   {
     title: "Status",
     dataIndex: "status"
+  },
+  {
+    title: "Action",
+    dataIndex: "action"
   }
 ];
-const data1: any = [];
-for (let i = 0; i < 46; i++) {
-  data1.push({
-    key: i,
-    name: `Edward King ${i}`,
-    product: 32,
-    status: `London, Park Lane no. ${i}`
-  });
-}
+
 const Enquiries = (props: Props) => {
+  const dispatch: AppDispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getEnquiries());
+  }, [dispatch]);
+  const enquiryState = useSelector((state: any) => state.enquiry.enquires);
+  const data1: any = [];
+  for (let i = 0; i < enquiryState.length; i++) {
+    data1.push({
+      key: i + 1,
+      name: enquiryState[i].name,
+      email: enquiryState[i].email,
+      phone: enquiryState[i].phone,
+      status: (
+        <>
+          <select name="" id="" className="form-control form-select">
+            <option value="">Set status</option>
+          </select>
+        </>
+      ),
+      action: (
+        <>
+          <Link className="ms-3 fs-2 text-danger" to="/">
+            <AiFillDelete />
+          </Link>
+        </>
+      )
+    });
+  }
   return (
     <div>
       <h3 className="mb-4">Enquiries</h3>

@@ -16,7 +16,8 @@ router.put("/reset-password/:token", userController.resetPassword);
 router.put("/password", authMiddleware, userController.updatePassword);
 router.put("/order/update-order/:id", authMiddleware, isAdmin, userController.updateOrderStatus);
 
-router.get("/get-orders", authMiddleware, userController.getOrder);
+router.get("/get-order", authMiddleware, userController.getOrder);
+router.get("/get-orders", authMiddleware, isAdmin, userController.getAllOrders);
 router.get("/wishlist", authMiddleware, userController.getWishList);
 router.get("/get-users", userController.getAllUser);
 router.get("/refresh", userController.handleRefreshToken);

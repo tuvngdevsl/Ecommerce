@@ -196,7 +196,7 @@ const AdminLayout = (props: Props) => {
                 <Link
                   className="dropdown-item py-1 mb-1"
                   style={{ height: "auto", lineHeight: "20px" }}
-                  to="# "
+                  to="#"
                 >
                   Logout
                 </Link>
