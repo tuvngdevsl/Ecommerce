@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import customerService from "./customerServices";
+import { Customer } from "types/customer.type";
 
 export const getUsers = createAsyncThunk("customer/get-customer", async (_, thunkAPI) => {
   try {
@@ -9,7 +10,15 @@ export const getUsers = createAsyncThunk("customer/get-customer", async (_, thun
   }
 });
 
-const initialState = {
+interface CustomerState {
+  customers: Customer[];
+  isError: boolean;
+  isLoading: boolean;
+  isSuccess: boolean;
+  message: string;
+}
+
+const initialState: CustomerState = {
   customers: [],
   isError: false,
   isLoading: false,

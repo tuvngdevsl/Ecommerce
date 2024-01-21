@@ -1,5 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import brandService from "./brandService";
+import { Brand } from "types/brand.type";
+
+interface BrandState {
+  brands: Brand[];
+  isLoading: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  message: string;
+}
 
 export const getBrands = createAsyncThunk("brand/get-brands", async (_, thunkApi) => {
   try {
@@ -9,7 +18,7 @@ export const getBrands = createAsyncThunk("brand/get-brands", async (_, thunkApi
   }
 });
 
-const initialState = {
+const initialState: BrandState = {
   brands: [],
   isLoading: false,
   isSuccess: false,

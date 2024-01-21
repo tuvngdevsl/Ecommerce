@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Table } from "antd";
 import { getColors } from "features/color/colorSlice";
-import { AppDispatch } from "app/store";
+import { AppDispatch, RootState } from "app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
@@ -28,7 +28,7 @@ const Colorlist = (props: Props) => {
     dispatch(getColors());
   }, [dispatch]);
 
-  const colorState = useSelector((state: any) => state.color.colors);
+  const colorState = useSelector((state: RootState) => state.color.colors);
   const data1: any = [];
   for (let i = 0; i < colorState.length; i++) {
     data1.push({

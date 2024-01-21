@@ -1,6 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import bCategoryService from "./bCategoryService";
-
+import { bCategory } from "types/bCategory.type";
+interface BCategoryState {
+  bCategories: bCategory[];
+  isSuccess: boolean;
+  isError: boolean;
+  isLoading: boolean;
+  message: string;
+}
 export const getBlogCategories = createAsyncThunk(
   "/blogCategory/get-blogCategories",
   (_, thunkApi) => {
@@ -12,7 +19,7 @@ export const getBlogCategories = createAsyncThunk(
   }
 );
 
-const initialState = {
+const initialState: BCategoryState = {
   bCategories: [],
   isSuccess: false,
   isError: false,

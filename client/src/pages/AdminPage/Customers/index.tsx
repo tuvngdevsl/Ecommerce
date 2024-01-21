@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../features/customers/customerSlice";
-import { AppDispatch } from "../../../app/store";
+import { AppDispatch, RootState } from "../../../app/store";
 type Props = {};
 const columns = [
   {
@@ -30,7 +30,7 @@ const Customers = (props: Props) => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const customerState = useSelector((state: any) => state.customer.customers);
+  const customerState = useSelector((state: RootState) => state.customer.customers);
   const data1: any = [];
   for (let i = 0; i < customerState.length; i++) {
     if (customerState[i].role !== "user") {

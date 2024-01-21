@@ -1,6 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import colorService from "./colorService";
+import { Color } from "types/color.type";
 
+interface ColorState {
+  colors: Color[];
+  isSuccess: boolean;
+  isError: boolean;
+  isLoading: boolean;
+  message: string;
+}
 export const getColors = createAsyncThunk("/color/get-colors", (_, thunkApi) => {
   try {
     return colorService.getColors();
@@ -9,7 +17,7 @@ export const getColors = createAsyncThunk("/color/get-colors", (_, thunkApi) => 
   }
 });
 
-const initialState = {
+const initialState: ColorState = {
   colors: [],
   isSuccess: false,
   isError: false,

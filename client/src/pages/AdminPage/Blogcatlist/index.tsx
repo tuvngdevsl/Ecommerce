@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Table } from "antd";
-import { AppDispatch } from "app/store";
+import { AppDispatch, RootState } from "app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogCategories } from "features/bCategory/bCategorySlice";
 import { Link } from "react-router-dom";
@@ -28,7 +28,7 @@ const Blogcatlist = (props: Props) => {
     dispatch(getBlogCategories());
   }, [dispatch]);
 
-  const bCategoryState = useSelector((state: any) => state.bCategory.bCategories);
+  const bCategoryState = useSelector((state: RootState) => state.bCategory.bCategories);
   const data1: any = [];
   for (let i = 0; i < bCategoryState.length; i++) {
     data1.push({

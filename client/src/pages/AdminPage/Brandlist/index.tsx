@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Table } from "antd";
-import { AppDispatch } from "app/store";
+import { AppDispatch, RootState } from "app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../../features/brand/brandSlice";
 import { Link } from "react-router-dom";
@@ -28,7 +28,7 @@ const Brandlist = (props: Props) => {
     dispatch(getBrands());
   }, [dispatch]);
 
-  const brandState = useSelector((state: any) => state.brand.brands);
+  const brandState = useSelector((state: RootState) => state.brand.brands);
 
   const data1: any = [];
   for (let i = 0; i < brandState?.length; i++) {
