@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getEnquiries } from "../../../features/enquiry/enquirySlice";
-import { AppDispatch } from "app/store";
+import { AppDispatch, RootState } from "app/store";
 import { Link } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 type Props = {};
@@ -38,7 +38,7 @@ const Enquiries = (props: Props) => {
   useEffect(() => {
     dispatch(getEnquiries());
   }, [dispatch]);
-  const enquiryState = useSelector((state: any) => state.enquiry.enquires);
+  const enquiryState = useSelector((state: RootState) => state.enquiry.enquiries);
   const data1: any = [];
   for (let i = 0; i < enquiryState.length; i++) {
     data1.push({

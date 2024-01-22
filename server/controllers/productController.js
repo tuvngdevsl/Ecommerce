@@ -3,9 +3,8 @@ import asyncHandler from "express-async-handler";
 import httpStatusCode from "../utils/httpStatusCode.js";
 import slugify from "slugify";
 import UserModel from "../models/UserModel.js";
-import cloudinaryUploadImg from "../utils/cloudinary.js";
 import validateId from "../utils/validateId.js";
-import fs from "fs";
+
 const productController = {
   //Create Product
   createProduct: asyncHandler(async (req, res) => {
@@ -218,40 +217,6 @@ const productController = {
       res.status(httpStatusCode.OK).json({
         message: "Rating Ok",
         data: finalProduct
-      });
-    } catch (error) {
-      throw new Error(error);
-    }
-  }),
-  //Upload Image
-  uploadImage: asyncHandler(async (req, res) => {
-    const { id } = req.params;
-    validateId(id);
-    try {
-      const uploader = path => cloudinaryUploadImg(path, "images");
-      const urls = [];
-      const files = req.files;
-      console.log(req.files);
-      for (const file of files) {
-        const { path } = file;
-        const newPath = await uploader(path);
-        urls.push(newPath);
-        fs.unlinkSync(path);
-      }
-
-      const findProduct = await Product.findByIdAndUpdate(
-        id,
-        {
-          images: urls.map(file => {
-            return file;
-          })
-        },
-        {
-          new: true
-        }
-      );
-      res.status(httpStatusCode.OK).json({
-        data: findProduct
       });
     } catch (error) {
       throw new Error(error);

@@ -6,7 +6,8 @@ import authRouter from "./routes/authRoute.js";
 import productRouter from "./routes/productRoute.js";
 import blogRouter from "./routes/blogRoute.js";
 import categoryRouter from "./routes/categoryRoute.js";
-import brandRoute from "./routes/brandRoute.js";
+import brandRouter from "./routes/brandRoute.js";
+import uploadRouter from "./routes/uploadRoute.js";
 import colorRoute from "./routes/colorRoute.js";
 import couponRoute from "./routes/couponRouter.js";
 import enqRouter from "./routes/enqRoute.js";
@@ -34,10 +35,11 @@ app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/blogCategory", blogCategoryRouter);
-app.use("/api/brand", brandRoute);
+app.use("/api/brand", brandRouter);
 app.use("/api/coupon", couponRoute);
 app.use("/api/color", colorRoute);
 app.use("/api/enquiry", enqRouter);
+app.use("/api/upload", uploadRouter)
 
 //middlewares
 app.use(notFound);

@@ -6,6 +6,7 @@ import { getCategories } from "features/category/categorySlice";
 import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
+import { RootState } from "../../../app/store";
 type Props = {};
 const columns = [
   {
@@ -28,12 +29,12 @@ const Categorylist = (props: Props) => {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const categoriesState = useSelector((state: any) => state.category.categories);
+  const categoriesState = useSelector((state: RootState) => state.category.categories);
 
   const data1: any = [];
   for (let i = 0; i < categoriesState.length; i++) {
     data1.push({
-      key: i,
+      key: i + 1,
       title: categoriesState[i].title,
       action: (
         <>

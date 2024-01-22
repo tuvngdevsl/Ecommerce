@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import { getProducts } from "../../../features/product/productSlice";
-import { AppDispatch } from "../../../app/store";
+import { AppDispatch, RootState } from "../../../app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -48,7 +48,7 @@ const Productlist = (props: Props) => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-  const productState = useSelector((state: any) => state.product.products);
+  const productState = useSelector((state: RootState) => state.product.products);
 
   const data1: any = [];
   for (let i = 0; i < productState.length; i++) {

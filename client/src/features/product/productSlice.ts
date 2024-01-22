@@ -1,6 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import productService from "./productServices";
+import { Product } from "types/product.type";
 
+interface ProductState {
+  products: Product[];
+  isLoading: boolean;
+  isError: boolean;
+  isSuccess: boolean;
+  message: string;
+}
 export const getProducts = createAsyncThunk("product/get-products", async (_, thunkApi) => {
   try {
     return await productService.getProducts();
@@ -9,7 +17,7 @@ export const getProducts = createAsyncThunk("product/get-products", async (_, th
   }
 });
 
-const initialState = {
+const initialState: ProductState = {
   products: [],
   isLoading: false,
   isError: false,

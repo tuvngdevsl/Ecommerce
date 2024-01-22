@@ -10,9 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../../features/brand/brandSlice";
 import { getCategories } from "features/category/categorySlice";
 import { getColors } from "features/color/colorSlice";
-import { AppDispatch } from "app/store";
+import { AppDispatch, RootState } from "app/store";
 import Multiselect from "react-widgets/Multiselect";
 import "react-widgets/styles.css";
+import Dropzone from "react-dropzone";
+import { uploadImg } from "features/upload/uploadSlice";
+
 interface Color {
   id: string;
   color: string;
@@ -42,7 +45,11 @@ const propsUpload = {
 let schema = Yup.object().shape({
   title: Yup.string().required("Title is Required"),
   description: Yup.string().required("Description is Required"),
-  price: Yup.number().required("Price is Required")
+  price: Yup.number().required("Price is Required"),
+  brand: Yup.string().required("Brand is Required"),
+  category: Yup.string().required("Category is Required"),
+  color: Yup.array().required("Color is Required"),
+  quantity: Yup.number().required("Quantity is Required")
 });
 const Addproduct = (props: Props) => {
   const dispatch: AppDispatch = useDispatch();
@@ -51,11 +58,11 @@ const Addproduct = (props: Props) => {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(getColors());
-    // formik.values.color = color;
-  }, []);
-  const brandState = useSelector((state: any) => state.brand.brands);
-  const categoryState = useSelector((state: any) => state.category.categories);
-  const colorState = useSelector((state: any) => state.color.colors);
+    formik.values.color = color;
+  }, [dispatch]);
+  const brandState = useSelector((state: RootState) => state.brand.brands);
+  const categoryState = useSelector((state: RootState) => state.category.categories);
+  const colorState = useSelector((state: RootState) => state.color.colors);
   const colors: Color[] = [];
   colorState.forEach((color: any) => {
     colors.push({
@@ -68,7 +75,11 @@ const Addproduct = (props: Props) => {
     initialValues: {
       title: "",
       description: "",
-      price: ""
+      price: "",
+      brand: "",
+      category: "",
+      color: [],
+      quantity: ""
     },
     validationSchema: schema,
     onSubmit: values => {
@@ -115,7 +126,15 @@ const Addproduct = (props: Props) => {
             onblur={formik.handleBlur("price")}
           />
           <div className="error">{formik.touched.price && formik.errors.price}</div>
-          <select name="" id="" className="form-control py-3">
+
+          <select
+            name="brand"
+            onChange={formik.handleChange("brand")}
+            onBlur={formik.handleBlur("brand")}
+            value={formik.values.brand}
+            id=""
+            className="form-control py-3"
+          >
             <option value="">Select Brand</option>
             {brandState.map((brand: any, index: any) => {
               return (
@@ -125,7 +144,16 @@ const Addproduct = (props: Props) => {
               );
             })}
           </select>
-          <select name="" id="" className="form-control py-3">
+
+          <div className="error">{formik.touched.brand && formik.errors.brand}</div>
+          <select
+            name="category"
+            id=""
+            className="form-control py-3"
+            onChange={formik.handleChange("category")}
+            onBlur={formik.handleBlur("category")}
+            value={formik.values.category}
+          >
             <option value="">Select Category</option>
             {categoryState.map((category: any) => {
               return (
@@ -135,22 +163,39 @@ const Addproduct = (props: Props) => {
               );
             })}
           </select>
+          <div className="error">{formik.touched.category && formik.errors.category}</div>
+
           <Multiselect
             dataKey="id"
             textField="color"
             data={colors}
             onChange={(e: any) => setColor(e)}
           />
-          <Dragger {...propsUpload}>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            <p className="ant-upload-hint">
-              Support for a single or bulk upload. Strictly prohibited from uploading company data
-              or other banned files.
-            </p>
-          </Dragger>
+          <div className="error">{formik.touched.color && formik.errors.color}</div>
+
+          <Input
+            name="quantity"
+            type="number"
+            placeholder="Enter Product Quantity"
+            classname="form-floating py-3"
+            i_id=""
+            value={formik.values.quantity}
+            onchange={formik.handleChange("quantity")}
+            onblur={formik.handleBlur("quantity")}
+          />
+          <div className="error">{formik.touched.quantity && formik.errors.quantity}</div>
+          <div className="bg-white border-1 p-5 text-center">
+            <Dropzone onDrop={acceptedFiles => dispatch(uploadImg(acceptedFiles))}>
+              {({ getRootProps, getInputProps }) => (
+                <section>
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <p>Drag 'n' drop some files here, or click to select files</p>
+                  </div>
+                </section>
+              )}
+            </Dropzone>
+          </div>
 
           <button className="btn btn-success border-0 rounded-3 my-5 py-3" type="submit">
             Add Product

@@ -1,5 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import enquiryServices from "./enquiryServices";
+import { Enquiry } from "types/enquiry.type";
+
+interface EnquiryState {
+  enquiries: Enquiry[];
+  isLoading: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  message: string;
+}
 
 export const getEnquiries = createAsyncThunk("/enquiry/get-enquiries", async (_, thunkApi) => {
   try {
@@ -9,8 +18,8 @@ export const getEnquiries = createAsyncThunk("/enquiry/get-enquiries", async (_,
   }
 });
 
-const initialState = {
-  enquires: [],
+const initialState: EnquiryState = {
+  enquiries: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -30,7 +39,7 @@ const enquirySlice = createSlice({
         state.isSuccess = true;
         state.isLoading = false;
         state.isError = false;
-        state.enquires = action.payload;
+        state.enquiries = action.payload;
       })
       .addCase(getEnquiries.rejected, (state, action) => {
         state.isError = false;
