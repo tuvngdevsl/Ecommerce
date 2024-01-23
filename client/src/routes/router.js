@@ -50,7 +50,7 @@ const privateRouter = [
   { path: "list-category", component: Categorylist },
   { path: "list-brand", component: Brandlist },
   { path: "list-product", component: Productlist },
-  { path: "blog-category-lis", component: Blogcatlist, layout: null }
+  { path: "blog-category-list", component: Blogcatlist, layout: null }
 ];
 
 /*

@@ -39,7 +39,7 @@ app.use("/api/brand", brandRouter);
 app.use("/api/coupon", couponRoute);
 app.use("/api/color", colorRoute);
 app.use("/api/enquiry", enqRouter);
-app.use("/api/upload", uploadRouter)
+app.use("/api/upload", uploadRouter);
 
 //middlewares
 app.use(notFound);

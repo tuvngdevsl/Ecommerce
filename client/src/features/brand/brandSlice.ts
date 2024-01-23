@@ -8,6 +8,7 @@ interface BrandState {
   isSuccess: boolean;
   isError: boolean;
   message: string;
+  createdBrand: any;
 }
 
 export const getBrands = createAsyncThunk("brand/get-brands", async (_, thunkApi) => {
@@ -18,12 +19,24 @@ export const getBrands = createAsyncThunk("brand/get-brands", async (_, thunkApi
   }
 });
 
+export const createBrands = createAsyncThunk(
+  "brand/create-brand",
+  async (dataBrand: any, thunkApi) => {
+    try {
+      return await brandService.createBrand(dataBrand);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
 const initialState: BrandState = {
   brands: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
-  message: ""
+  message: "",
+  createdBrand: null
 };
 
 export const brandSlice = createSlice({
@@ -41,6 +54,20 @@ export const brandSlice = createSlice({
         state.brands = action.payload;
       })
       .addCase(getBrands.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.message = action.error.message || "";
+      })
+      .addCase(createBrands.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(createBrands.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isError = false;
+        state.createdBrand = action.payload;
+      })
+      .addCase(createBrands.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
         state.isSuccess = false;

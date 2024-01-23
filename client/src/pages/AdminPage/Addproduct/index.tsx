@@ -1,46 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../../components/Input";
 import ReactQuill from "react-quill";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import "react-quill/dist/quill.snow.css";
-import { InboxOutlined } from "@ant-design/icons";
-import { message, Upload } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../../features/brand/brandSlice";
 import { getCategories } from "features/category/categorySlice";
 import { getColors } from "features/color/colorSlice";
 import { AppDispatch, RootState } from "app/store";
-import Multiselect from "react-widgets/Multiselect";
 import "react-widgets/styles.css";
 import Dropzone from "react-dropzone";
-import { uploadImg } from "features/upload/uploadSlice";
+import { delImg, uploadImg } from "features/upload/uploadSlice";
+import { createProducts } from "features/product/productSlice";
+import { Select } from "antd";
+import { useNavigate } from "react-router-dom";
 
-interface Color {
-  id: string;
-  color: string;
-}
+import { toast } from "react-toastify";
+
 type Props = {};
-const { Dragger } = Upload;
-const propsUpload = {
-  name: "file",
-  multiple: true,
-  action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
-  onChange(info: any) {
-    const { status } = info.file;
-    if (status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (status === "done") {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e: any) {
-    console.log("Dropped files", e.dataTransfer.files);
-  }
-};
 
 let schema = Yup.object().shape({
   title: Yup.string().required("Title is Required"),
@@ -48,28 +26,57 @@ let schema = Yup.object().shape({
   price: Yup.number().required("Price is Required"),
   brand: Yup.string().required("Brand is Required"),
   category: Yup.string().required("Category is Required"),
-  color: Yup.array().required("Color is Required"),
+  tags: Yup.string().required("Tag is Required"),
+  color: Yup.array().min(1, "Choose at least one color").required("Color is Required"),
   quantity: Yup.number().required("Quantity is Required")
 });
 const Addproduct = (props: Props) => {
   const dispatch: AppDispatch = useDispatch();
-  const [color, setColor] = useState([]);
+  const navigate = useNavigate();
+  const [color, setColor] = useState<never[]>([]);
+
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(getColors());
-    formik.values.color = color;
   }, [dispatch]);
+
   const brandState = useSelector((state: RootState) => state.brand.brands);
   const categoryState = useSelector((state: RootState) => state.category.categories);
   const colorState = useSelector((state: RootState) => state.color.colors);
-  const colors: Color[] = [];
+  const imageState = useSelector((state: RootState) => state.upload.images);
+  const newProduct = useSelector((state: RootState) => state.product);
+  const { isSuccess, isError, isLoading, createdProduct } = newProduct;
+
+  useEffect(() => {
+    if (isSuccess && createdProduct.data) {
+      toast.success("Product Add Successfully");
+    }
+    if (isError) {
+      toast.error("Something went wrong");
+    }
+  }, [isError, isLoading, isSuccess, createdProduct]);
+
+  const colorOpt: any = [];
   colorState.forEach((color: any) => {
-    colors.push({
-      id: color._id,
-      color: color.title
+    colorOpt.push({
+      value: color._id,
+      label: color.title
     });
   });
+
+  const img: any = [];
+  imageState.forEach((i: any) => {
+    img.push({
+      public_id: i.public_id,
+      url: i.url
+    });
+  });
+  useEffect(() => {
+    formik.values.color = color;
+    formik.values.images = img;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [color, img]);
 
   const formik = useFormik({
     initialValues: {
@@ -78,18 +85,24 @@ const Addproduct = (props: Props) => {
       price: "",
       brand: "",
       category: "",
+      tags: "",
       color: [],
+      images: "",
       quantity: ""
     },
     validationSchema: schema,
     onSubmit: values => {
-      alert(JSON.stringify(values));
+      dispatch(createProducts(values));
+      formik.resetForm();
+      setColor([]);
+      setTimeout(() => {
+        navigate("/admin/list-product");
+      }, 1000);
     }
   });
-  const [desc, setDesc] = useState("");
-  const handleDesc = (e: any) => {
-    setDesc(e);
-    console.log(desc);
+
+  const handleColor = (e: any) => {
+    setColor(e);
   };
   return (
     <div>
@@ -137,11 +150,7 @@ const Addproduct = (props: Props) => {
           >
             <option value="">Select Brand</option>
             {brandState.map((brand: any, index: any) => {
-              return (
-                <option key={index} value={brand.title}>
-                  {brand.title}
-                </option>
-              );
+              return <option value={brand.title}>{brand.title}</option>;
             })}
           </select>
 
@@ -165,11 +174,31 @@ const Addproduct = (props: Props) => {
           </select>
           <div className="error">{formik.touched.category && formik.errors.category}</div>
 
-          <Multiselect
-            dataKey="id"
-            textField="color"
-            data={colors}
-            onChange={(e: any) => setColor(e)}
+          <select
+            name="tags"
+            id=""
+            className="form-control py-3"
+            onChange={formik.handleChange("tags")}
+            onBlur={formik.handleBlur("tags")}
+            value={formik.values.tags}
+          >
+            <option value="" disabled>
+              Select Tags
+            </option>
+            <option value="featured">Featured</option>
+            <option value="popular">Popular</option>
+            <option value="special">Special</option>
+          </select>
+          <div className="error">{formik.touched.tags && formik.errors.tags}</div>
+
+          <Select
+            mode="multiple"
+            allowClear
+            className="w-100"
+            placeholder="Select colors"
+            defaultValue={color}
+            onChange={(i: any) => handleColor(i)}
+            options={colorOpt}
           />
           <div className="error">{formik.touched.color && formik.errors.color}</div>
 
@@ -196,7 +225,21 @@ const Addproduct = (props: Props) => {
               )}
             </Dropzone>
           </div>
-
+          <div className="show-images  d-flex flex-wrap gap-3">
+            {imageState?.map((image: any, index: any) => {
+              return (
+                <div className="position-relative" key={index}>
+                  <button
+                    type="button"
+                    onClick={() => dispatch(delImg(image.public_id))}
+                    className="btn-close position-absolute"
+                    style={{ top: "10px", right: "10px" }}
+                  ></button>
+                  <img src={image.url} alt="" width={200} height={200} />
+                </div>
+              );
+            })}
+          </div>
           <button className="btn btn-success border-0 rounded-3 my-5 py-3" type="submit">
             Add Product
           </button>

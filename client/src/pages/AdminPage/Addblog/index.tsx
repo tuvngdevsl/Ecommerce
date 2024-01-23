@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../../../components/Input";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";

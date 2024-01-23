@@ -57,7 +57,7 @@ const Productlist = (props: Props) => {
       title: productState[i].title,
       brand: productState[i].brand,
       category: productState[i].category,
-      color: productState[i].color,
+      color: productState[i]?.color,
       price: `${productState[i].price}`,
       action: (
         <>

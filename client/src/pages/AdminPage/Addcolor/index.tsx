@@ -14,7 +14,7 @@ const Addcolor = (props: Props) => {
               name="color"
               type="text"
               placeholder="Enter Color"
-              classname="form-floating py-3"
+              className="form-floating py-3"
             />
           </div>
           <button className="btn btn-success border-0 rounded-3 my-5 py-3" type="submit">

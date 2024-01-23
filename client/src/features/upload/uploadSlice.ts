@@ -15,7 +15,15 @@ export const uploadImg = createAsyncThunk("upload/images", async (data: any, thu
     for (let i = 0; i < data.length; i++) {
       formData.append("images", data[i]);
     }
-    return await uploadService.uploadImg(data);
+    return await uploadService.uploadImg(formData);
+  } catch (error) {
+    return thunkApi.rejectWithValue(error);
+  }
+});
+
+export const delImg = createAsyncThunk("delete/images", async (id: any, thunkApi) => {
+  try {
+    await uploadService.deleteImg(id);
   } catch (error) {
     return thunkApi.rejectWithValue(error);
   }
@@ -48,6 +56,21 @@ export const uploadSlice = createSlice({
         state.isSuccess = false;
         state.isLoading = false;
         state.isError = true;
+        state.message = action.error.message || "";
+      })
+      .addCase(delImg.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(delImg.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.isError = false;
+        state.images = [];
+      })
+      .addCase(delImg.rejected, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.isError = false;
         state.message = action.error.message || "";
       });
   }

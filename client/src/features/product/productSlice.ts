@@ -4,6 +4,7 @@ import { Product } from "types/product.type";
 
 interface ProductState {
   products: Product[];
+  createdProduct: any;
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
@@ -17,8 +18,20 @@ export const getProducts = createAsyncThunk("product/get-products", async (_, th
   }
 });
 
+export const createProducts = createAsyncThunk(
+  "product/create-products",
+  async (productData: any, thunkApi) => {
+    try {
+      return await productService.createProduct(productData);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
 const initialState: ProductState = {
   products: [],
+  createdProduct: [],
   isLoading: false,
   isError: false,
   isSuccess: false,
@@ -41,6 +54,21 @@ export const productSlice = createSlice({
         state.products = action.payload;
       })
       .addCase(getProducts.rejected, (state, action) => {
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.error.message || "";
+      })
+      .addCase(createProducts.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(createProducts.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.isError = false;
+        state.createdProduct = action.payload;
+      })
+      .addCase(createProducts.rejected, (state, action) => {
         state.isSuccess = false;
         state.isLoading = false;
         state.isError = true;

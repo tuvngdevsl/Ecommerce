@@ -15,6 +15,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiCategoryAlt } from "react-icons/bi";
 import styles from "./Adminlayout.module.scss";
 import classNames from "classnames/bind";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const cx = classNames.bind(styles);
 
@@ -233,6 +235,17 @@ const AdminLayout = (props: Props) => {
             }}
           >
             {props.children}
+            <ToastContainer
+              position="top-right"
+              autoClose={250}
+              hideProgressBar={false}
+              newestOnTop={true}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              theme="light"
+            />
           </Content>
         </div>
       </Layout>
